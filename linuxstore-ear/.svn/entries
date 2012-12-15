@@ -1,0 +1,46 @@
+10
+
+dir
+63
+https://imag-forge.e.ujf-grenoble.fr:443/svn/linuxstore/linuxstore-ear
+https://imag-forge.e.ujf-grenoble.fr:443/svn/linuxstore
+
+
+
+2012-11-13T14:03:22.163596Z
+23
+mercierm
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+fed67b21-3a01-0010-8dd0-db1564cb58a4
+
+pom.xml
+file
+
+
+
+
+
+bd04e19b50ccf81e35e12a12d149945b
+2012-11-13T14:03:22.163596Z
+23
+mercierm
+has-props
+
+svn:special svn:externals svn:needs-lock
+
+src
+dir
+

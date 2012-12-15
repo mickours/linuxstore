@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/svn/linuxstore/!svn/ver/54/linuxstoreShell
+END
+test.txt
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/linuxstore/!svn/ver/25/linuxstoreShell/test.txt
+END
+addApplications.txt
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/linuxstore/!svn/ver/32/linuxstoreShell/addApplications.txt
+END
+build.xml
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/linuxstore/!svn/ver/20/linuxstoreShell/build.xml
+END

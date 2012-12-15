@@ -1,0 +1,68 @@
+<div id="indexLeftColumn">
+    <div id="welcomeText">
+        <p id="titleCategorie">Categories</p>
+        <p>
+        <table>
+            <c:forEach var="category" items="${categories}" varStatus="iter">
+                <tr>
+                <td><img src="Pictures/bleuStar.png"></td>
+                    <c:choose>
+                        <c:when test="${category == selectedCategory}">
+                            <td class="selected">
+                                ${category}
+                            </td>
+                        </c:when>
+                        <c:otherwise>
+                            <td>
+                            <a href="<c:url value='applications?category=${category}&search=${patern}'/>">
+                                ${category}
+                            </a>
+                            </td>
+                        </c:otherwise>
+                    </c:choose>
+                </tr>
+            </c:forEach>
+        </table>
+        </p>
+    </div>
+</div>
+
+<div id="indexRightColumn">
+    <div class="searchBar">
+        <span class="titleSearch">Recherche </span>
+        <span class="fieldSearch">
+            <form>
+                <input type="text" name="search">
+            </form></span>
+        <span class="magnifyingGlass">
+            <form>
+                <input type="image" src="Pictures/magnifyingGlass.png">
+            </form>
+          </span> 
+        <span class="titleSorting">Trier par :</span>
+        <span class="fieldSorting">
+            <form>
+            <SELECT name="fonction">
+		<OPTION VALUE="prix">Prix</OPTION>
+		<OPTION VALUE="nom">Nom</OPTION>
+            </SELECT>
+            </form>
+        </span>
+    </div>
+
+    <c:forEach var="app" items="${appList}" varStatus="iter">
+        <div class="categoryMiniBox">
+            <img src="Pictures/des.png">
+            ${app.name} <br>
+            ${app.category} <br>
+            ${app.description} <br>
+            ${app.price} <br>
+            <form action="addToCart" method="POST">
+                <input type="hidden" name="appToAddId" value="${app.id}">
+                <input type="submit" name="submitApp" value="Get It!">
+            </form>
+            <br>
+        </div>
+    </c:forEach>
+
+</ul>

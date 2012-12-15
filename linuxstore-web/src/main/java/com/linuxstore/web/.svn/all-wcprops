@@ -1,0 +1,65 @@
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/linuxstore/!svn/ver/63/linuxstore-web/src/main/java/com/linuxstore/web
+END
+PostApplication.java
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/linuxstore/!svn/ver/63/linuxstore-web/src/main/java/com/linuxstore/web/PostApplication.java
+END
+MyApplications.java
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/linuxstore/!svn/ver/62/linuxstore-web/src/main/java/com/linuxstore/web/MyApplications.java
+END
+Connection.java
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/linuxstore/!svn/ver/61/linuxstore-web/src/main/java/com/linuxstore/web/Connection.java
+END
+Disconnect.java
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/linuxstore/!svn/ver/55/linuxstore-web/src/main/java/com/linuxstore/web/Disconnect.java
+END
+AboutServlet.java
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/linuxstore/!svn/ver/53/linuxstore-web/src/main/java/com/linuxstore/web/AboutServlet.java
+END
+Inscription.java
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/linuxstore/!svn/ver/60/linuxstore-web/src/main/java/com/linuxstore/web/Inscription.java
+END
+CartServlet.java
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/linuxstore/!svn/ver/55/linuxstore-web/src/main/java/com/linuxstore/web/CartServlet.java
+END
+IndexServlet.java
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/linuxstore/!svn/ver/55/linuxstore-web/src/main/java/com/linuxstore/web/IndexServlet.java
+END
+ListApplication.java
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/linuxstore/!svn/ver/55/linuxstore-web/src/main/java/com/linuxstore/web/ListApplication.java
+END
+infoAppServlet.java
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/linuxstore/!svn/ver/64/linuxstore-web/src/main/java/com/linuxstore/web/infoAppServlet.java
+END

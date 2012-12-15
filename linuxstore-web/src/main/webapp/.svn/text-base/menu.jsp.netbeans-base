@@ -1,0 +1,15 @@
+<%-- 
+    Document   : menu
+    Created on : 23 oct. 2012, 16:10:15
+    Author     : cam
+--%>
+
+<div id="menu">
+    <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Applications</a></li>
+        <li><a href="#">My applications</a></li>
+        <li><a href="#">Post application</a></li>
+        <li><a href="#">About</a></li>
+    </ul>
+</div>

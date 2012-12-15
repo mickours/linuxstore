@@ -1,0 +1,118 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package com.linuxstore.ejb;
+
+import com.linuxstore.ejb.Application.Category;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.LinkedList;
+import java.util.List;
+import javax.ejb.ApplicationException;
+import javax.ejb.Stateless;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
+/**
+ *
+ * @author Michael Mercier <michael_mercier@orange.fr>
+ */
+@Stateless
+public class ApplicationFacade extends AbstractFacade<Application> implements ApplicationFacadeRemote {
+    @PersistenceContext(unitName = "Application-ejbPU")
+    private EntityManager em;
+    
+    @Override
+    protected EntityManager getEntityManager() {
+        return em;
+    }
+
+    public ApplicationFacade() {
+        super(Application.class);
+    }
+
+    @ApplicationException
+    public class AppException extends RuntimeException {
+        public AppException(String message) {
+            super(message);
+        }
+    }
+    
+
+    public List<Application> filter(List<Application> appList, Category categ) {
+        List<Application> filteredList = new LinkedList<Application>();
+        try{
+            for (Application app : appList){
+                if (app.getCategory().equals(categ)){
+                    filteredList.add(app);
+                }
+            }
+        } catch(Exception ex){
+            throw new AppException("The filtering is impossible");
+        }
+        return filteredList;
+    }
+
+    /**
+     * gives the count of application in this category with this patern. If the 
+     * patern is null or empty it gives the count for all the applications
+     */
+    public int categoryCount(String patern,Category categ) {
+        int nb = 0;
+        List<Application> appList;
+        if (patern == null || patern.isEmpty()){
+            appList = findAll();
+        }
+        else{
+            appList = search(patern);
+        }
+        for (Application app : appList){
+            if (app.getCategory().equals(categ)){
+                nb++;
+            }
+        }
+        return nb;
+    }
+    
+    public void sortByPrice(List<Application> appList){
+        Collections.sort(appList, new Comparator<Application>() {
+                    @Override
+                    public int compare(Application t, Application t1) {
+                        return (t.getPrice() < t1.getPrice())? -1: 1;
+                    }
+        });
+    }
+    
+    public void sortByName(List appList) {
+        Collections.sort(appList, new Comparator<Application>() {
+                    @Override
+                    public int compare(Application t, Application t1) {
+                        return t.getName().compareTo(t1.getName());
+                    }
+        });
+    }
+    
+    
+
+    public List<Application> search(String patern){
+        List<Application> found = new LinkedList<Application>();
+        boolean match = false;
+        try {
+            for (Application app : findAll()){
+                for (String toMatch : patern.split("\\s")){
+                    if (app.toString().matches("(?i).*"+toMatch+".*") && !match){
+                        found.add(app);
+                        match = true;
+                    }
+                }
+                match = false;
+            }
+        } catch (Exception e) {
+            throw new AppException("Invalid research");
+        }
+        
+        return found;
+    }
+
+}
