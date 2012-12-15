@@ -7,7 +7,8 @@
             </c:when>
             <c:otherwise>
                 <div id="errorMessage">
-                    <fmt:message key="error"/> : <fmt:message key="${errorMessage}"/>.
+                    <!--<fmt:message key="error"/> :--> 
+                    <fmt:message key="${errorMessage}"/>.
                 </div>
             </c:otherwise>
         </c:choose>

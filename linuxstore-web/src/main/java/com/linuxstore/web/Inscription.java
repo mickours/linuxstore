@@ -74,8 +74,8 @@ public class Inscription extends HttpServlet {
                             user.setLoginMail(userName);
                             user.setPassword(password);
                             utilisateurs.create(user);
-                            request.setAttribute("successMessage", "inscription_success");
-                            URLHelper.redirectTo(URLHelper.Page.inscription, request, response);
+                            request.setAttribute("errorMessage", "inscription_success");
+                            URLHelper.redirectTo(URLHelper.Page.connection, request, response);
                         }
                     }
                 }

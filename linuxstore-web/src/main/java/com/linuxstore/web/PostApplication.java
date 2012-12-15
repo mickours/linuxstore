@@ -50,15 +50,15 @@ public class PostApplication extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        //not connected
+        if (request.getSession().getAttribute("user") == null){
+            request.setAttribute("backTo","post_application");
+            request.setAttribute("errorMessage", "error_not_logged_applications");
+            URLHelper.redirectTo(Page.connection, request, response);
+        }
+        //form is ok
+        else if (FileUpload.isMultipartContent(request)) {
 
-        if (FileUpload.isMultipartContent(request)) {
-            // Wrap the form data
-//        String name = request.getParameter("name");
-//        String description = request.getParameter("description");
-//        String category = request.getParameter("category");
-//        String price = request.getParameter("price");
-
-            //if ((name != null) && (description != null)) {
             String msg = "application_posted";
             request.setAttribute("confirmationMessage", msg);
             URLHelper.redirectTo(Page.confirmation, request, response);
@@ -87,7 +87,9 @@ public class PostApplication extends HttpServlet {
 //                request.setAttribute("confirmationMessage", msg);
 //                URLHelper.redirectTo(Page.confirmation, request, response);
 //            }
-        } else {
+        }
+        //access to form
+        else {
             request.setAttribute("categories", Category.values());
             URLHelper.redirectTo(Page.post_application, request, response);
         }

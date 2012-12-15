@@ -37,6 +37,7 @@ public class MyApplications extends HttpServlet {
         HttpSession session = request.getSession();
         LinuxStoreUser user = (LinuxStoreUser) session.getAttribute("user");
         if (user == null) {
+            request.setAttribute("backTo","my_application");
             request.setAttribute("errorMessage", "error_not_logged_applications");
             request.getRequestDispatcher("connection").forward(request, response);
         } else {

@@ -60,13 +60,17 @@ public class Connection extends HttpServlet {
                 if (user.getPassword().equals(password)) {
                     session.setAttribute("user", user);
                 } else {
-                    request.setAttribute("errorMessage", "error_password.");
+                    request.setAttribute("errorMessage", "error_password");
                 }
             }
 
         }
         if (user != null) {
-            request.getRequestDispatcher("my_applications").forward(request, response);
+            String to = (String) request.getAttribute("backTo");
+            if(to==null){
+                to="my_applications";
+            }
+            request.getRequestDispatcher(to).forward(request, response);
         }
         else{
             URLHelper.redirectTo(Page.connection, request, response);
