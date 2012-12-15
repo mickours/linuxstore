@@ -16,9 +16,6 @@
                 </form> 
     </div>
     <div  class="buttonDownloadITInfoApp">
-       <form action="download" method="POST">
-                    <input type="hidden" name="appToAddId" value="${app.id}">
-                    <input type="submit" name="submitApp" value="Download It!">
-                </form> 
+        <a href="${app.filePath}">sdfdrgrg </a>
     </div>
 </div>

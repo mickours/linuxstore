@@ -77,6 +77,10 @@ public class Application implements Serializable {
         return new File(filePath);
     }
 
+    public String getFilePath() {
+        return filePath;
+    }
+
     public void setFile(String file) {
         this.filePath = file;
     }
