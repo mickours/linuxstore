@@ -18,7 +18,7 @@ import org.apache.commons.io.FilenameUtils;
  */
 public class UploadFileHelper {
 
-    public final static String applications = "/uploads/";
+    public final static String applications = "uploads/";
     public final static String image = applications + "img/";
     public static List<String> listOfAppExtensions = Arrays.asList("zip", "gz", "tar", "7z");
     public static List<String> listOfImgExtensions = Arrays.asList("jpg", "jpeg", "png", "gif");
@@ -52,12 +52,14 @@ public class UploadFileHelper {
                 File file = null;
                 if (listOfAppExtensions.contains(fileExtensionName)) {
                     base = servletPath+applications;
-                    file = new File(base, fileItem.getName());
-                    app.setFile(file.getPath());
+                    File tmp = new File(fileItem.getName());
+                    file = new File(base, tmp.getName());
+                    app.setFile(applications+file.getName());
                 } else if (listOfImgExtensions.contains(fileExtensionName)) {
                     base = servletPath+image;
-                    file = new File(base, fileItem.getName());
-                    app.setImagePath(file.getPath());
+                    File tmp = new File(fileItem.getName());
+                    file = new File(base, tmp.getName());
+                    app.setImagePath(image+file.getName());
                 }
                 if (base == null) {
                     throw new Exception("Unsuported files");
