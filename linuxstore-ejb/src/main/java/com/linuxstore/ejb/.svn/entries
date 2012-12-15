@@ -28,9 +28,20 @@ fed67b21-3a01-0010-8dd0-db1564cb58a4
 
 controller
 dir
+
+
+
+delete
 
 entity
 dir
+
+messageDriven
+dir
+
+
+
+add
 
 remote
 dir

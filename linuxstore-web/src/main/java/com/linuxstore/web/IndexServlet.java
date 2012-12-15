@@ -47,8 +47,17 @@ public class IndexServlet extends HttpServlet {
         for (Application.Category c : Application.Category.values()) {
             cats.add(new CategoriesView(c.toString(), applicationFacade.categoryCount(null, c)));
         }
-        Application topGame=new Application();
+        List<Application> app=applicationFacade.findAll();
+        Application topGame=applicationFacade.filter(app, Application.Category.Jeux).get(0);
+        Application topTheme=applicationFacade.filter(app, Application.Category.Themes).get(0);
+        Application topAccesoire=applicationFacade.filter(app, Application.Category.Accessoires).get(0);
+        Application topMultimedia=applicationFacade.filter(app, Application.Category.Multimedia).get(0);
         request.setAttribute("categories", cats);
+        request.setAttribute("appTopGame", topGame);
+        request.setAttribute("appTopTheme", topTheme);
+        request.setAttribute("appTopAccessoire", topAccesoire);
+        request.setAttribute("appTopMulti", topMultimedia);
+        
         URLHelper.redirectTo(Page.index, request, response);
     }
 

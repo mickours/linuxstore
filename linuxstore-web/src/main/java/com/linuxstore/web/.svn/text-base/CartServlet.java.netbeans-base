@@ -6,45 +6,48 @@ package com.linuxstore.web;
 
 import com.linuxstore.ejb.entity.Application;
 import com.linuxstore.ejb.remote.ApplicationFacadeRemote;
+import com.linuxstore.web.utils.AppCart;
 import com.linuxstore.web.utils.URLHelper;
-import com.linuxstore.web.utils.URLHelper.Page;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.List;
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author mickours
+ * @author Michael Mercier <michael_mercier@orange.fr>
  */
-@WebServlet(name = "infoAppServlet", urlPatterns = {"/infoApp"})
-public class infoAppServlet extends HttpServlet {
+@WebServlet(name = "CartServlet", urlPatterns = {"/addToCart", "/viewCart", "/removeFromCart"})
+public class CartServlet extends HttpServlet {
 
     @EJB
     private ApplicationFacadeRemote applicationFacade;
-    /**
-     * Processes requests for both HTTP
-     * <code>GET</code> and
-     * <code>POST</code> methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        
-         String idapp = request.getParameter("idapp");
-        Application app = applicationFacade.find(Long.parseLong(idapp));
-        
-        request.setAttribute("app", app);
-        URLHelper.redirectTo(Page.infoApp,request, response);
+
+    private void processRequest(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+        String userPath = request.getServletPath();
+        HttpSession session = request.getSession();
+        AppCart cart = (AppCart) session.getAttribute("cart");
+        if (cart == null) {
+            cart = new AppCart();
+            session.setAttribute("cart", cart);
+        }
+
+        if (userPath.equals("/viewCart")) {
+            // TODO: Implement viewCart request
+        } else if (userPath.equals("/addToCart")) {
+            String appToAddId = request.getParameter("appToAddId");
+            Application appToAdd = applicationFacade.find(Long.parseLong(appToAddId));
+            cart.addApp(appToAdd);
+        } else if (userPath.equals("/removeFromCart")) {
+            String appToRemoveId = request.getParameter("appToRemoveId");
+            Application toRemove = applicationFacade.find(Long.parseLong(appToRemoveId));
+            cart.removeApp(toRemove);
+        }
+        URLHelper.redirectTo(URLHelper.Page.cart,request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

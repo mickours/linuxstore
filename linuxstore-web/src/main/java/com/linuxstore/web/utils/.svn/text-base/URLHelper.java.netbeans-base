@@ -28,7 +28,8 @@ public class URLHelper {
         inscription,
         my_applications,
         post_application,
-        post_update;
+        post_update,
+        infoApp
     };
 
     private static final String viewsPath = "/WEB-INF/view/";

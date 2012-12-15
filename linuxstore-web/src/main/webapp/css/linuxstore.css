@@ -39,6 +39,10 @@ body {
     min-height: 640px;
 }
 
+a{
+    color: black;
+}
+
 /******************************************************************************/
 /**     HEADER                                                                */
 /******************************************************************************/
@@ -193,7 +197,7 @@ background-image: -webkit-gradient(
     min-height: 500px;
     width: 782px;
     float: right;
-    border-top: 2px solid #404141;
+    border-top: 1px solid #404141;
 }
 
 .searchBar{
@@ -255,23 +259,46 @@ background-image: -webkit-gradient(
     margin-left: 2%;
 }
 .categoryBox {
-    height: 190px;
-    width: 265px;
-    margin: 20px 60px 6px;
+    height: 175px;
+    width: 260px;
+    margin: 20px 50px 6px;
     float: left;
     background: #404141;
     border-radius: 10px;
+    color: white;
+        padding: 15px;
+
 
 }
 
 .categoryBox .TitleApp{
-    
+    color: dodgerblue;
+}
+
+.categoryBox .descriApp{
+    color:white;
+    margin-top: -18px;
+    text-align: justify;
+    font-size: small;
+}
+
+.categoryBox .ImgApp{
+    margin-top: -5px;
+}
+
+.categoryBox .priceApp{
+    color: white;
+    margin-top: 3px;
+}
+
+.categoryBox .buttonGetIT{
+    margin-top: 0px;
 }
 
 .categoryLabelText {
     line-height: 150%;
     font-size: x-large;
-    color: dodgerblue;
+    color: #00F639;
 }
 
 
@@ -314,7 +341,7 @@ a:link {
 
 .descriApp{
     float: left;
-    height: 38%;
+    height: 36%;
     overflow: hidden;
     margin-top: 4%;
 }
@@ -340,9 +367,10 @@ a:link {
 
 .buttonGetIT input{
    background-color: dodgerblue;
-    border: 1px solid black; 
+    border: 1px solid #335F8A; 
     border-radius: 11px;
     cursor: pointer; 
+    color: white;
 }
 
 /******************************************************************************/
@@ -510,9 +538,10 @@ a:link {
     width: 70px;
     height: 25px;
      background-color: dodgerblue;
-    border: 1px solid black; 
+    border: 1px solid #335F8A; 
     border-radius: 11px;
     cursor: pointer; 
+    color: white;
 }
 
 .contenu input {
@@ -549,6 +578,8 @@ a:link {
     margin-top: -92px;
     margin-right: 14%;
     text-align: justify;
+    min-width: 500px;
+    min-height: 80px;
 }
 
 .priceInfoApp{
@@ -564,9 +595,10 @@ a:link {
 
 .buttonGetITInfoApp input{
     background-color: dodgerblue;
-    border: 1px solid black; 
+    border: 1px solid #335F8A; 
     border-radius: 11px;
     cursor: pointer;
+    color: white;
 }
 .buttonDownloadITInfoApp{
     float: left;
@@ -576,7 +608,8 @@ a:link {
 
 .buttonDownloadITInfoApp input{
     background-color: dodgerblue;
-    border: 1px solid black; 
+    border: 1px solid #335F8A; 
     border-radius: 11px;
     cursor: pointer;
+    color: white;
 }
