@@ -64,8 +64,9 @@ public class ListApplication extends HttpServlet {
                 appList = applicationFacade.findAll();
         }
         if (sortby != null){
+             request.setAttribute("sortby",sortby);
             if (sortby.equals("price")){
-                appList = applicationFacade.sortByPrice(appList);
+                appList = applicationFacade.sortByPrice(appList);              
             }
             else if(sortby.equals("name")){
                 appList = applicationFacade.sortByName(appList);

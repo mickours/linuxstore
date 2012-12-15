@@ -72,7 +72,7 @@ public class PostApplication extends HttpServlet {
                 Application e = new Application();
 
                 //upload File and Icon on the server
-                UploadFileHelper.uploadApplication(request, e);
+                UploadFileHelper.uploadApplication(request, e, getServletContext().getRealPath("/"));
 
                 message.setObject(e);
                 messageProducer.send(message);

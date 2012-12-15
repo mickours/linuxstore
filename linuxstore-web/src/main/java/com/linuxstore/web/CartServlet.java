@@ -37,7 +37,7 @@ public class CartServlet extends HttpServlet {
         }
 
         if (userPath.equals("/viewCart")) {
-            // TODO: Implement viewCart request
+            //do nothing
         } else if (userPath.equals("/addToCart")) {
             String appToAddId = request.getParameter("appToAddId");
             Application appToAdd = applicationFacade.find(Long.parseLong(appToAddId));

@@ -2,6 +2,10 @@
 <div id="indexLeftColumn">
     <p id="titleCategorie"><fmt:message key ="categories"/></p>
     <table>
+        <tr>
+            <td><img src="Pictures/bleuStar.png"></td>
+            <td> <a href="applications"><fmt:message key="all_applications"/></a></td>
+        </tr>
         <c:forEach var="category" items="${categories}" varStatus="iter">
             <tr>
                 <td><img src="Pictures/bleuStar.png"></td>
@@ -31,14 +35,12 @@
             <div class="searchTextInput">
                 <input type='text' id='search' name="search" value='${patern}' >
             </div>
-        </form>
-        <form class="sortByBar" action="applications" title="Trier par">
             <label for="sortby"><fmt:message key ="sort_by" /> :</label>
-            <SELECT id="sortby" name="sortby">
-                <OPTION VALUE="price">Prix</OPTION>
-                <OPTION VALUE="name">Nom</OPTION>
+            <SELECT id="sortby" name="sortby" >
+                <OPTION VALUE="price" ${sortby eq "price"? "selected": ""}>Prix</OPTION>
+                <OPTION VALUE="name"  ${sortby eq "name"? "selected": ""}>Nom</OPTION>
             </SELECT>
-            ${empty patern? "": "<input type='hidden' name='search' value=".concat(patern).concat(" >")}
+            
             ${empty selectedCategory? "": "<input type='hidden' name='category' value=".concat(selectedCategory).concat(" >")}
             <input type='Submit' id="submitSearch" value='Search'/>
         </form>

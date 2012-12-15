@@ -1,12 +1,5 @@
 <div class="CartPage">
     <div class="titleCart"><h1>Your Cart</h1></div>
-     <div class="searchBarCart">
-                <span class="titleSearchCart">Search : </span>
-                <span class="fieldSearchCart">
-                     <form>
-                        <input type="text" name="search">
-                     </form></span>
-    </div>
 <table class="cartTable">
     <tr>
         <th class="thApplication">Application</th>
@@ -17,9 +10,8 @@
         <tr class="${((iter.index % 2) == 1) ? 'lightBlue' : 'white'}">
             <td>
                 <div class="nameImageAppTab">
-                    <span><img width="8%" src="${initParam.appImagePath}${app.imagePath}.png"
-                               alt="${app.name}"></span>
-                    <span> ${app.name}</span>
+                               <img width="32px" height="32px" src=${empty app.imagePath ? "Pictures/des.png"  : app.imagePath}>
+                               <span> ${app.name}</span>
                 </div>
             </td>
             <td>${app.price}&euro;</td>
@@ -38,13 +30,13 @@
 </table>
                 
      <div class="buttonContinueShopping">
-       <form action="ContinuPurchase" method="POST">
+       <form action="/applications">
                     <input type="button"
                            value="Continue shopping">
                 </form>  
     </div>
      <div class="buttonProceedCheckoutg">
-       <form action="ContinuPurchase" method="POST">
+       <form action="purchase" >
                     <input type="button"
                            value="Proceed to checkout">
                 </form>  

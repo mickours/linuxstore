@@ -18,19 +18,19 @@ import org.apache.commons.io.FilenameUtils;
  */
 public class UploadFileHelper {
 
-    public final static String applications = "uploads/";
+    public final static String applications = "/uploads/";
     public final static String image = applications + "img/";
-    public static List<String> listOfAppExtensions = Arrays.asList("zip", "tar.gz", "tar", "7z");
+    public static List<String> listOfAppExtensions = Arrays.asList("zip", "gz", "tar", "7z");
     public static List<String> listOfImgExtensions = Arrays.asList("jpg", "jpeg", "png", "gif");
 
-    public static void uploadApplication(HttpServletRequest request, Application app) throws Exception {
+    public static void uploadApplication(HttpServletRequest request, Application app,String servletPath) throws Exception {
         // on prépare pour l'envoie par la mise en oeuvre en mémoire
         DiskFileItemFactory fileItemFactory = new DiskFileItemFactory();
         ServletFileUpload uploadHandler = new ServletFileUpload(fileItemFactory);
         List items = uploadHandler.parseRequest(request);
 
-        new File(applications).mkdirs();
-        new File(image).mkdirs();
+        new File(servletPath+applications).mkdirs();
+        new File(servletPath+image).mkdirs();
         
         Iterator itr = items.iterator();
         while (itr.hasNext()) {
@@ -51,11 +51,11 @@ public class UploadFileHelper {
                 String base = null;
                 File file = null;
                 if (listOfAppExtensions.contains(fileExtensionName)) {
-                    base = applications;
+                    base = servletPath+applications;
                     file = new File(base, fileItem.getName());
                     app.setFile(file.getPath());
                 } else if (listOfImgExtensions.contains(fileExtensionName)) {
-                    base = image;
+                    base = servletPath+image;
                     file = new File(base, fileItem.getName());
                     app.setImagePath(file.getPath());
                 }

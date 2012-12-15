@@ -1,6 +1,6 @@
 <div>
     <div class="pictureApp">
-        <img src="Pictures/Cardgame.png">
+       <img width="128px" height="128px" src=${empty app.imagePath ? "Pictures/des.png"  : app.imagePath}>
     </div>
     <div class="titleApp">
        ${app.name}

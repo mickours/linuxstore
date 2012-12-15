@@ -1,7 +1,7 @@
 <div>
     <div class="onglets">
-        <div class="onglet_n onglet"><a href="post_application.jsp">Post an application</a></div>
-        <div class="onglet_y onglet"><a href="post_update.jsp">Post an update</a></div>
+        <div class="onglet_n onglet"><a href="post_application"><fmt:message key="post_application"/></a></div>
+        <div class="onglet_y onglet"><a href="post_update"><fmt:message key="post_update"/></a></div>
     </div>
     <div class="contenu">
         <form action="PostMyUpdate" title="postUpdate">

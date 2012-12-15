@@ -423,6 +423,10 @@ a:link {
     text-align: left;
 }
 
+nameImageAppTab span{
+    margin-top: -3px;
+}
+
 .searchBarCart{
     background-color: #404141;
     width: 30%;
