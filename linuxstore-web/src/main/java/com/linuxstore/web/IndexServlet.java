@@ -48,15 +48,19 @@ public class IndexServlet extends HttpServlet {
             cats.add(new CategoriesView(c.toString(), applicationFacade.categoryCount(null, c)));
         }
         List<Application> app=applicationFacade.findAll();
-        Application topGame=applicationFacade.filter(app, Application.Category.Jeux).get(0);
-        Application topTheme=applicationFacade.filter(app, Application.Category.Themes).get(0);
-        Application topAccesoire=applicationFacade.filter(app, Application.Category.Accessoires).get(0);
-        Application topMultimedia=applicationFacade.filter(app, Application.Category.Multimedia).get(0);
-        request.setAttribute("categories", cats);
-        request.setAttribute("appTopGame", topGame);
-        request.setAttribute("appTopTheme", topTheme);
-        request.setAttribute("appTopAccessoire", topAccesoire);
-        request.setAttribute("appTopMulti", topMultimedia);
+        try{
+            Application topGame = applicationFacade.filter(app, Application.Category.Jeux).get(0);
+            Application topTheme = applicationFacade.filter(app, Application.Category.Themes).get(0);
+            Application topAccesoire = applicationFacade.filter(app, Application.Category.Accessoires).get(0);
+            Application topMultimedia = applicationFacade.filter(app, Application.Category.Multimedia).get(0);
+            request.setAttribute("categories", cats);
+            request.setAttribute("appTopGame", topGame);
+            request.setAttribute("appTopTheme", topTheme);
+            request.setAttribute("appTopAccessoire", topAccesoire);
+            request.setAttribute("appTopMulti", topMultimedia);
+        }catch(IndexOutOfBoundsException ex){
+            //do nothing : missing apps
+        }
         
         URLHelper.redirectTo(Page.index, request, response);
     }

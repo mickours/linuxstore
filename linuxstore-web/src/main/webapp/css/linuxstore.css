@@ -373,6 +373,20 @@ a:link {
     color: white;
 }
 
+.button {
+    padding: 2px;
+    background-color: dodgerblue;
+    border: 1px solid #335F8A; 
+    border-radius: 11px;
+    cursor: pointer; 
+    color: white;
+    margin-left: 2%;
+    float: left;
+    margin-top: -2%;
+}
+
+
+
 /******************************************************************************/
 /*    CONNECTION AND INSCRIPTION                                                                   */
 /******************************************************************************/

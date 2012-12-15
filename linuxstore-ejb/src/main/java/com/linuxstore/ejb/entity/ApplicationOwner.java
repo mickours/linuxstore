@@ -24,6 +24,12 @@ public class ApplicationOwner implements Serializable {
     Application app;
     LinuxStoreUser user;
     boolean isAuthor;
+    
+    public void setRelation(Application app, LinuxStoreUser user, boolean isAuthor){
+        this.app = app;
+        this.user = user;
+        this.isAuthor = isAuthor;
+    }
 
     public Long getId() {
         return id;

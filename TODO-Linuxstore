@@ -1,0 +1,16 @@
+## Linux Store ##
+
+TODO:
+* Bouton download OU get it dans appInfo
+* internationnaliser cart
+* lien pour infoApp sur cart item
+* bouton dans cart qui marche
+* faire page payer
+* rendre champs de form poster requiered
+* faire a propos
+
+
+DONE:
+* menu selectionné visible
+* sort by sur la liste courante
+* mettre en place l'internationnalisation

@@ -1,11 +1,5 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.linuxstore.ejb.entity;
 
-import java.awt.Image;
-import java.io.File;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Column;
@@ -15,6 +9,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 /**
@@ -40,7 +35,18 @@ public class Application implements Serializable {
 
     @OneToMany
     private List<Comment> commentList;
+    
+    @ManyToOne
+    private LinuxStoreUser owner;
 
+    public void setOwner(LinuxStoreUser owner) {
+        this.owner = owner;
+    }
+
+    public LinuxStoreUser getOwner() {
+        return owner;
+    }
+    
     public enum Category implements Serializable
     {
         Jeux,Themes,Accessoires,Bureautique,Internet,Programmation,Multimedia
@@ -71,10 +77,6 @@ public class Application implements Serializable {
 
     public String getImagePath() {
         return imagePath;
-    }
-
-    public File getFile() {
-        return new File(filePath);
     }
 
     public String getFilePath() {

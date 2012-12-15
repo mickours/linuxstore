@@ -6,7 +6,8 @@
        ${app.name}
     </div>
     <div class="descInfoApp">
-        ${app.description}
+        <p>${app.description}</p>
+        <p>Poster par ${app.owner.loginMail}</p>
     </div>
         <div class="priceInfoApp">${app.price}&euro;</div>
     <div  class="buttonGetITInfoApp">
@@ -16,6 +17,6 @@
                 </form> 
     </div>
     <div  class="buttonDownloadITInfoApp">
-        <a href="${app.filePath}">sdfdrgrg </a>
+        <a class="button" href="${app.filePath}">Download</a>
     </div>
 </div>

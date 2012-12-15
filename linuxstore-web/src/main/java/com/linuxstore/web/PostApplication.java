@@ -6,6 +6,8 @@ package com.linuxstore.web;
 
 import com.linuxstore.ejb.entity.Application;
 import com.linuxstore.ejb.entity.Application.Category;
+import com.linuxstore.ejb.entity.LinuxStoreUser;
+import com.linuxstore.ejb.remote.ApplicationOwnerFacadeRemote;
 import com.linuxstore.web.utils.URLHelper;
 import com.linuxstore.web.utils.URLHelper.Page;
 import com.linuxstore.web.utils.UploadFileHelper;
@@ -13,8 +15,10 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.Resource;
+import javax.ejb.EJB;
 import javax.jms.Connection;
 import javax.jms.ConnectionFactory;
+import javax.jms.JMSException;
 import javax.jms.MessageProducer;
 import javax.jms.ObjectMessage;
 import javax.jms.Queue;
@@ -60,33 +64,39 @@ public class PostApplication extends HttpServlet {
         else if (FileUpload.isMultipartContent(request)) {
 
             String msg = "application_posted";
-            request.setAttribute("confirmationMessage", msg);
-            URLHelper.redirectTo(Page.confirmation, request, response);
+            Connection connection = null;
+            MessageProducer messageProducer = null;
             try {
-                Connection connection = connectionFactory.createConnection();
+                connection = connectionFactory.createConnection();
                 Session session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
-                MessageProducer messageProducer = session.createProducer(queue);
+                messageProducer = session.createProducer(queue);
 
                 ObjectMessage message = session.createObjectMessage();
                 // here we create NewsEntity, that will be sent in JMS message
                 Application e = new Application();
-
                 //upload File and Icon on the server
                 UploadFileHelper.uploadApplication(request, e, getServletContext().getRealPath("/"));
+                //link app to User
+                LinuxStoreUser user = (LinuxStoreUser) request.getSession().getAttribute("user");
+                e.setOwner(user);
 
                 message.setObject(e);
                 messageProducer.send(message);
-                messageProducer.close();
-                connection.close();
 
             } catch (Exception ex) {
                 Logger.getLogger(PostApplication.class.getName()).log(Level.SEVERE, null, ex);
                 msg = "application_not_posted";
             }
-//            }finally{
-//                request.setAttribute("confirmationMessage", msg);
-//                URLHelper.redirectTo(Page.confirmation, request, response);
-//            }
+            finally{
+                try {
+                    messageProducer.close();
+                    connection.close();
+                    request.setAttribute("confirmationMessage", msg);
+                    URLHelper.redirectTo(Page.confirmation, request, response);
+                } catch (JMSException ex) {
+                    //fuck that
+                }
+            }
         }
         //access to form
         else {
