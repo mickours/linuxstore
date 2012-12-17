@@ -382,7 +382,6 @@ a:link {
     color: white;
     margin-left: 2%;
     float: left;
-    margin-top: -2%;
 }
 
 
@@ -481,6 +480,83 @@ nameImageAppTab span{
 .clear{
     clear: both;
 }
+
+/******************************************************************************/
+/**     PURCHASE                                                              */
+/******************************************************************************/
+
+#form_container
+{
+	background:#fff;
+	
+	margin:0 auto;
+	text-align:left;
+	width:640px;
+}
+
+form ul
+{
+	font-size:100%;
+	list-style-type:none;
+	margin:0;
+	padding:0;
+	width:100%;
+}
+
+form li
+{
+	display:block;
+	margin-bottom: 5px;
+	padding:4px 5px 2px 9px;
+	position:relative;
+}
+
+form li div
+{
+	display:inline-block;
+}
+
+form li div label
+{
+	clear:both;
+	color:#444;
+	display:block;
+	font-size:9px;
+	line-height:9px;
+	margin:0;
+	padding-top:3px;
+}
+
+label.description
+{
+	border:none;
+	color:#222;
+	display:block;
+	font-size:95%;
+	font-weight:700;
+	line-height:150%;
+	padding:0 0 1px;
+}
+
+span.symbol
+{
+	font-size:115%;
+	line-height:130%;
+}
+
+input.text
+{
+	border-bottom:1px solid #ddd;
+	border-left:1px solid #c3c3c3;
+	border-right:1px solid #c3c3c3;
+	border-top:1px solid #7c7c7c;
+	color:#333;
+	font-size:100%;
+	margin:0;
+	padding:2px 0;
+}
+
+
 
 /******************************************************************************/
 /**     Onglets Post_an_application                                                             */

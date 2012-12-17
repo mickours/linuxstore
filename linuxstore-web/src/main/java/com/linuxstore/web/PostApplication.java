@@ -7,7 +7,6 @@ package com.linuxstore.web;
 import com.linuxstore.ejb.entity.Application;
 import com.linuxstore.ejb.entity.Application.Category;
 import com.linuxstore.ejb.entity.LinuxStoreUser;
-import com.linuxstore.ejb.remote.ApplicationOwnerFacadeRemote;
 import com.linuxstore.web.utils.URLHelper;
 import com.linuxstore.web.utils.URLHelper.Page;
 import com.linuxstore.web.utils.UploadFileHelper;
@@ -15,7 +14,6 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.Resource;
-import javax.ejb.EJB;
 import javax.jms.Connection;
 import javax.jms.ConnectionFactory;
 import javax.jms.JMSException;
@@ -56,7 +54,7 @@ public class PostApplication extends HttpServlet {
             throws ServletException, IOException {
         //not connected
         if (request.getSession().getAttribute("user") == null){
-            request.setAttribute("backTo","post_application");
+            request.getSession().setAttribute("backTo","post_application");
             request.setAttribute("errorMessage", "error_not_logged_applications");
             URLHelper.redirectTo(Page.connection, request, response);
         }

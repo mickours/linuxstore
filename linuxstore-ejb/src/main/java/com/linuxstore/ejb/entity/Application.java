@@ -39,6 +39,15 @@ public class Application implements Serializable {
     @ManyToOne
     private LinuxStoreUser owner;
 
+    public enum Category implements Serializable
+    {
+        Jeux,Themes,Accessoires,Bureautique,Internet,Programmation,Multimedia
+    }
+
+    @Enumerated(EnumType.STRING)
+    private Category category;
+    
+    
     public void setOwner(LinuxStoreUser owner) {
         this.owner = owner;
     }
@@ -47,13 +56,6 @@ public class Application implements Serializable {
         return owner;
     }
     
-    public enum Category implements Serializable
-    {
-        Jeux,Themes,Accessoires,Bureautique,Internet,Programmation,Multimedia
-    }
-
-    @Enumerated(EnumType.STRING)
-    private Category category;
 
     public void setValidated() {
         this.validated = true;
