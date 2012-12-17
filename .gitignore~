@@ -7,4 +7,5 @@
 
 target/
 dist/
-private/
+build/
+nbproject/private/

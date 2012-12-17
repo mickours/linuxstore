@@ -66,7 +66,8 @@ public class Connection extends HttpServlet {
 
         }
         if (user != null) {
-            String to = (String) request.getAttribute("backTo");
+            String to = (String) session.getAttribute("backTo");
+            session.removeAttribute("backTo");
             if(to==null){
                 to="my_applications";
             }

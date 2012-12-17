@@ -6,11 +6,11 @@ package com.linuxstore.web;
 
 import com.linuxstore.ejb.entity.Application;
 import com.linuxstore.ejb.entity.LinuxStoreUser;
-import com.linuxstore.ejb.remote.ApplicationFacadeRemote;
+import com.linuxstore.ejb.remote.LinuxStoreUserFacadeRemote;
+import com.linuxstore.web.utils.AppCart;
 import com.linuxstore.web.utils.URLHelper;
-import com.linuxstore.web.utils.URLHelper.Page;
 import java.io.IOException;
-import java.util.ArrayList;
+import java.util.List;
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -21,14 +21,14 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author Michael Mercier <michael_mercier@orange.fr>
+ * @author mickours
  */
-@WebServlet(name = "MyApplications", urlPatterns = {"/my_applications"})
-public class MyApplications extends HttpServlet {
-
+@WebServlet(name = "PurchaseServlet", urlPatterns = {"/purchase"})
+public class PurchaseServlet extends HttpServlet {
     
     @EJB
-    private ApplicationFacadeRemote applicationFacade;
+    private LinuxStoreUserFacadeRemote userFacade;
+
     /**
      * Processes requests for both HTTP
      * <code>GET</code> and
@@ -44,18 +44,27 @@ public class MyApplications extends HttpServlet {
         HttpSession session = request.getSession();
         LinuxStoreUser user = (LinuxStoreUser) session.getAttribute("user");
         if (user == null) {
-            session.setAttribute("backTo","my_application");
-            request.setAttribute("errorMessage", "error_not_logged_applications");
+            session.setAttribute("backTo","purchase");
+            request.setAttribute("errorMessage", "error_not_logged_cart");
             request.getRequestDispatcher("connection").forward(request, response);
         } else {
-            ArrayList<Application> applicationsOfUser = new ArrayList<Application>() ;
-            for (Application app : applicationFacade.findAll()) {
-                if (user.equals(app.getOwner())) {
-                    applicationsOfUser.add(app);
-                }
+            //TODO check this values
+            String secCode = request.getParameter("securityCode");
+            String month = request.getParameter("month");
+            String day = request.getParameter("day");
+            String year = request.getParameter("year");
+            String isOk = request.getParameter("ok");
+            if (isOk != null){
+                //associate applications with the user
+                List<Application> appToAdd = ((AppCart)session.getAttribute("cart")).getAppList();
+                user.addToMyApplications(appToAdd);
+                userFacade.edit(user);
+                request.setAttribute("confirmationMessage", "purchase_finished");
+                URLHelper.redirectTo(URLHelper.Page.confirmation, request, response);
             }
-            request.setAttribute("applications",applicationsOfUser);
-           URLHelper.redirectTo(Page.my_applications, request, response);
+            else{
+                URLHelper.redirectTo(URLHelper.Page.purchase, request, response);
+            }
         }
     }
 

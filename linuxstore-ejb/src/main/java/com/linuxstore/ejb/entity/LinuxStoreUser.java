@@ -5,10 +5,12 @@
 package com.linuxstore.ejb.entity;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 /**
  *
@@ -23,7 +25,17 @@ public class LinuxStoreUser implements Serializable {
 
     private String loginMail;
     private String password;
+    
+    @OneToMany
+    private List<Application> myApplications;
 
+    public List<Application> getMyApplications() {
+        return myApplications;
+    }
+
+    public void addToMyApplications(List<Application> myApplications) {
+        this.myApplications.addAll(myApplications);
+    }
 
     public String getLoginMail() {
         return loginMail;

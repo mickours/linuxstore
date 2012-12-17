@@ -9,19 +9,19 @@
             <table>
                 <tr>
                     <td class="labelTd"><label for="namePostApp"><fmt:message key="title"/> :</label></td>
-                    <td class="fieldTd"><input type='text' name='name' id="namePostApp"></td>
+                    <td class="fieldTd"><input required type='text' name='name' id="namePostApp"></td>
                     <td class="labelFileTd"><label for="filePostApp" id="labelFile"><fmt:message key="file"/> :</label></td>
-                    <td class="fieldTd"> <input type='file' name='file' id="filePostApp"></td>
+                    <td class="fieldTd"> <input required type='file' name='file' id="filePostApp"></td>
                 </tr>
                 <tr>
                     <td class="labelTd"> <label for="descPostApp"><fmt:message key="description"/> :</label></td>
-                    <td class="fieldTd"><textarea name='description' id="descPostApp"></textarea></td>
+                    <td class="fieldTd"><textarea required name='description' id="descPostApp"></textarea></td>
                     <td class="labelFileTd"> </td>
                     <td class="fieldTd"></td>
                 </tr>
                 <tr>
                     <td class="labelTd"> <label for="pricePostApp"><fmt:message key="price"/> :</label></td>
-                    <td class="fieldTd"> <input type='text' name='price' id="pricePostApp"></td>
+                    <td class="fieldTd"> <input required type='text' name='price' id="pricePostApp"></td>
                     <td class="labelFileTd"> <label for="fileIconePostApp" id="labelFileIcone"><fmt:message key="icon"/> :</label></td>
                     <td class="fieldTd"><input type='file' name='icon' id="fileIconePostApp"></td>
                 </tr>

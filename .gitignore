@@ -8,7 +8,4 @@
 target/
 dist/
 build/
-nbproject/
-!nbproject/project.properties
-!nbproject/project.xml
-!/linuxstoreShell/nbproject/project.properties
+*/nbproject/private/
