@@ -4,10 +4,14 @@
  */
 package com.linuxstore.web;
 
+import com.linuxstore.ejb.entity.Application;
 import com.linuxstore.ejb.entity.LinuxStoreUser;
+import com.linuxstore.ejb.remote.ApplicationFacadeRemote;
 import com.linuxstore.web.utils.URLHelper;
 import com.linuxstore.web.utils.URLHelper.Page;
 import java.io.IOException;
+import java.util.ArrayList;
+import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -22,6 +26,9 @@ import javax.servlet.http.HttpSession;
 @WebServlet(name = "MyApplications", urlPatterns = {"/my_applications"})
 public class MyApplications extends HttpServlet {
 
+    
+    @EJB
+    private ApplicationFacadeRemote applicationFacade;
     /**
      * Processes requests for both HTTP
      * <code>GET</code> and
@@ -41,7 +48,14 @@ public class MyApplications extends HttpServlet {
             request.setAttribute("errorMessage", "error_not_logged_applications");
             request.getRequestDispatcher("connection").forward(request, response);
         } else {
-            URLHelper.redirectTo(Page.my_applications, request, response);
+            ArrayList<Application> applicationsOfUser = new ArrayList<Application>() ;
+            for (Application app : applicationFacade.findAll()) {
+                if (user.equals(app.getOwner())) {
+                    applicationsOfUser.add(app);
+                }
+            }
+            request.setAttribute("applications",applicationsOfUser);
+           URLHelper.redirectTo(Page.my_applications, request, response);
         }
     }
 

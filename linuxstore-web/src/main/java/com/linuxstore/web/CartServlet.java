@@ -23,9 +23,9 @@ import javax.servlet.http.HttpSession;
  */
 @WebServlet(name = "CartServlet", urlPatterns = {"/addToCart", "/viewCart", "/removeFromCart"})
 public class CartServlet extends HttpServlet {
-
-    @EJB
+@EJB
     private ApplicationFacadeRemote applicationFacade;
+    
 
     private void processRequest(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         String userPath = request.getServletPath();
