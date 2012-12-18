@@ -21,7 +21,7 @@
                     </td>
                     <td>
                 <c:choose>
-                    <c:when test="${app.validated}">
+                    <c:when test="${app.validated==true}">
                         <fmt:message key='online'/>
                     </c:when>
                     <c:otherwise>
@@ -31,7 +31,7 @@
                 </td>
                 <td>
                 <c:choose>
-                    <c:when test="${app.validated}">
+                    <c:when test="${app.validated==true}">
                         <a class="button" href="${app.filePath}"><fmt:message key='download'/></a>
                     </c:when>
                     <c:otherwise>

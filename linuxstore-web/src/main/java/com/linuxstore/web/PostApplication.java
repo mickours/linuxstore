@@ -7,13 +7,17 @@ package com.linuxstore.web;
 import com.linuxstore.ejb.entity.Application;
 import com.linuxstore.ejb.entity.Application.Category;
 import com.linuxstore.ejb.entity.LinuxStoreUser;
+import com.linuxstore.ejb.remote.ApplicationFacadeRemote;
+import com.linuxstore.ejb.remote.LinuxStoreUserFacadeRemote;
 import com.linuxstore.web.utils.URLHelper;
 import com.linuxstore.web.utils.URLHelper.Page;
 import com.linuxstore.web.utils.UploadFileHelper;
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.LinkedList;
 import java.util.List;
 import javax.annotation.Resource;
+import javax.ejb.EJB;
 import javax.jms.Connection;
 import javax.jms.ConnectionFactory;
 import javax.jms.JMSException;
@@ -39,6 +43,12 @@ public class PostApplication extends HttpServlet {
     private ConnectionFactory connectionFactory;
     @Resource(mappedName = "jms/NewMessage")
     private Queue queue;
+
+    @EJB
+    private ApplicationFacadeRemote appFacade;
+
+    @EJB
+    private LinuxStoreUserFacadeRemote userFacade;
 
     /**
      * Processes requests for both HTTP
@@ -74,15 +84,20 @@ public class PostApplication extends HttpServlet {
                 Application e = new Application();
                 //upload File and Icon on the server
                 UploadFileHelper.uploadApplication(request, e, getServletContext().getRealPath("/"));
+                //create the new app
+                appFacade.create(e);
                 //link app to User
                 LinuxStoreUser user = (LinuxStoreUser) request.getSession().getAttribute("user");
+                e = appFacade.findByName(e.getName());
                 e.setOwner(user);
+                appFacade.edit(e);
                 List<Application> applist = new LinkedList<Application>();
                 applist.add(e);
                 user.addToMyApplications(applist);
+                userFacade.edit(user);
 
-                message.setObject(e);
-                messageProducer.send(message);
+//                message.setObject(new UserAndApp(user,e));
+//                messageProducer.send(message);
 
             } catch (Exception ex) {
                 msg=ex.getMessage();
@@ -116,6 +131,17 @@ public class PostApplication extends HttpServlet {
 
 
     }
+//
+//    public class UserAndApp implements Serializable{
+//
+//        public UserAndApp(LinuxStoreUser user, Application app) {
+//            this.user = user;
+//            this.app = app;
+//        }
+//
+//        public LinuxStoreUser user;
+//        public Application app;
+//    }
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
 
     /**
