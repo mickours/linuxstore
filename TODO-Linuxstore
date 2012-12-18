@@ -3,6 +3,9 @@
 TODO:
 * Faire un bouton de changement de langue
 * date expiration
+* verifié état bouton download
+* vérifié internationnalisation
+* vérifié mes application
 
 DONE:
 * Bouton download OU get it dans appInfo

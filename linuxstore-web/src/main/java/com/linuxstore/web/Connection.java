@@ -69,7 +69,7 @@ public class Connection extends HttpServlet {
             String to = (String) session.getAttribute("backTo");
             session.removeAttribute("backTo");
             if(to==null){
-                to="/my_applications";
+                to="my_applications";
             }
             request.getRequestDispatcher(to).forward(request, response);
         }

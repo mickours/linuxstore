@@ -23,3 +23,4 @@ add "Tux navigator" Internet 0 "Tux navigator est un navigateur web pour les pla
 add "Lack of fidelity editor 3.1.2 beta" Programmation 2.99 "Cet éditeur vous permet de faire des scripts pour le jeu lack of fidelity. Cet éditeur propose des fonctionnalités d’indentation, de mise en couleur et est associé avec la documentation proposée par les développeurs du jeu lack of fidelity."
 add C-Heart Programmation 900 "Vous trouvez que le seul langage de programmation correct est le langage C ? Alors C-Heart est fait pour vous ! Ce logiciel vous permet d’écrire uniquement du code C et est associé avec un compilateur très rigoureux sur la syntaxe."
 add libHL Programmation 0 "libHL est une librairie en C# permettant de lire des fichiers très facilement. Cette librairie vous permet notamment d’inclure un fichier dans un autre tout en conservant un historique."
+validate

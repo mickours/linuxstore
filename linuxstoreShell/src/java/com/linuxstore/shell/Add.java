@@ -13,10 +13,10 @@ import com.linuxstore.ejb.remote.ApplicationFacadeRemote;
  * @author Clement WIRTH
  */
 public class Add implements ShellCommand {
-    
+
     private static ApplicationFacadeRemote applications;
     private Shell shell;
-    
+
     public Add(ApplicationFacadeRemote facade,Shell shell) {
         applications = facade;
         this.shell = shell;
@@ -72,9 +72,9 @@ public class Add implements ShellCommand {
         appli.setCategory(cate);
         appli.setPrice(price);
         appli.setDescription(description);
-        
-        appli.setOwner(shell.getLinuxStoreUser());
         applications.create(appli);
+        appli.setOwner(shell.getLinuxStoreUser());
+        applications.edit(appli);
         return "Application "+appli.getName()+" ajoutée";
     }
 
@@ -82,5 +82,5 @@ public class Add implements ShellCommand {
     public AccessType getAccessType() {
         return AccessType.UserOnly;
     }
-    
+
 }
