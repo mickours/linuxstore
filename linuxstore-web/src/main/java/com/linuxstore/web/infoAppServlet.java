@@ -5,6 +5,7 @@
 package com.linuxstore.web;
 
 import com.linuxstore.ejb.entity.Application;
+import com.linuxstore.ejb.entity.LinuxStoreUser;
 import com.linuxstore.ejb.remote.ApplicationFacadeRemote;
 import com.linuxstore.web.utils.URLHelper;
 import com.linuxstore.web.utils.URLHelper.Page;
@@ -39,11 +40,14 @@ public class infoAppServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
          String idapp = request.getParameter("idapp");
         Application app = applicationFacade.find(Long.parseLong(idapp));
-        
         request.setAttribute("app", app);
+
+        LinuxStoreUser user = (LinuxStoreUser) request.getSession().getAttribute("user");
+        boolean isPayed = user != null && user.getMyApplications().contains(app);
+        request.setAttribute("isPayed", isPayed);
         URLHelper.redirectTo(Page.infoApp,request, response);
     }
 

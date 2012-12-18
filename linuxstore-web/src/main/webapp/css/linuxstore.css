@@ -253,9 +253,9 @@ background-image: -webkit-gradient(
 
 #submitSearch{
    background-color: white;
-    border: 1px solid black; 
+    border: 1px solid black;
     border-radius: 11px;
-    cursor: pointer; 
+    cursor: pointer;
     margin-left: 2%;
 }
 .categoryBox {
@@ -362,23 +362,23 @@ a:link {
     margin-left: 2%;
     float: left;
     margin-top: -2%;
-    
+
 }
 
 .buttonGetIT input{
    background-color: dodgerblue;
-    border: 1px solid #335F8A; 
+    border: 1px solid #335F8A;
     border-radius: 11px;
-    cursor: pointer; 
+    cursor: pointer;
     color: white;
 }
 
 .button {
     padding: 2px;
     background-color: dodgerblue;
-    border: 1px solid #335F8A; 
+    border: 1px solid #335F8A;
     border-radius: 11px;
-    cursor: pointer; 
+    cursor: pointer;
     color: white;
     margin-left: 2%;
     float: left;
@@ -394,9 +394,9 @@ a:link {
 #connection input {background:white;border: 1px solid black;color:black;padding:5px;}
 #errorMessage {color:Red;border: 2px solid black;background:white;display:inline-block;padding:10px;margin-bottom:10px;}
 #successMessage {margin:10px;}
-.button_connexion{ 
+.button_connexion{
     background-color: dodgerblue;
-    border: 1px solid black; 
+    border: 1px solid black;
     border-radius: 11px;
     cursor: pointer;}
 
@@ -436,8 +436,8 @@ a:link {
     text-align: left;
 }
 
-nameImageAppTab span{
-    margin-top: -3px;
+.nameImageAppTab span{
+    line-height: 3em;
 }
 
 .searchBarCart{
@@ -488,7 +488,7 @@ nameImageAppTab span{
 #form_container
 {
 	background:#fff;
-	
+
 	margin:0 auto;
 	text-align:left;
 	width:640px;
@@ -632,9 +632,9 @@ input.text
     width: 70px;
     height: 25px;
      background-color: dodgerblue;
-    border: 1px solid #335F8A; 
+    border: 1px solid #335F8A;
     border-radius: 11px;
-    cursor: pointer; 
+    cursor: pointer;
     color: white;
 }
 
@@ -663,7 +663,7 @@ input.text
     color: dodgerblue;
     font-weight: bold;
     font-size: larger;
-    
+
 }
 
 .descInfoApp{
@@ -684,12 +684,12 @@ input.text
 .buttonGetITInfoApp{
     float: left;
     margin-left: 28%;
-    margin-top: 4%; 
+    margin-top: 4%;
 }
 
 .buttonGetITInfoApp input{
     background-color: dodgerblue;
-    border: 1px solid #335F8A; 
+    border: 1px solid #335F8A;
     border-radius: 11px;
     cursor: pointer;
     color: white;
@@ -697,13 +697,33 @@ input.text
 .buttonDownloadITInfoApp{
     float: left;
     margin-left: 2%;
-    margin-top: 4%; 
+    margin-top: 4%;
 }
 
 .buttonDownloadITInfoApp input{
     background-color: dodgerblue;
-    border: 1px solid #335F8A; 
+    border: 1px solid #335F8A;
     border-radius: 11px;
     cursor: pointer;
     color: white;
+}
+
+
+/******************************************************************************/
+/**  About                                                                    */
+/******************************************************************************/
+
+.apropos1{
+    padding: 30px;
+    text-align: justify;
+}
+
+.apropos2{
+    padding-left: 30px;
+    padding-right: 30px;
+    text-align: justify;
+}
+
+.logoPolytech{
+    margin-top: 3%;
 }
