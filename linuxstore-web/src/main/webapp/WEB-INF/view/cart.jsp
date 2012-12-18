@@ -8,12 +8,14 @@
         </tr>
         <c:forEach var="app" items="${cart.appList}" varStatus="iter">
             <tr class="${((iter.index % 2) == 1) ? 'lightBlue' : 'white'}">
+                <a href="<c:url value='infoApp?idapp=${app.id}' />">
                 <td>
                     <div class="nameImageAppTab">
                         <img width="32px" height="32px" src=${empty app.imagePath ? "Pictures/des.png"  : app.imagePath}>
                         <span> ${app.name}</span>
                     </div>
                 </td>
+                </a>
                 <td>${app.price}&euro;</td>
                 <td>
                     <form action="removeFromCart" method="POST">
