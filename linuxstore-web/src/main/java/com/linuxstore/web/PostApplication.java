@@ -11,6 +11,8 @@ import com.linuxstore.web.utils.URLHelper;
 import com.linuxstore.web.utils.URLHelper.Page;
 import com.linuxstore.web.utils.UploadFileHelper;
 import java.io.IOException;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.Resource;
@@ -77,6 +79,9 @@ public class PostApplication extends HttpServlet {
                 //link app to User
                 LinuxStoreUser user = (LinuxStoreUser) request.getSession().getAttribute("user");
                 e.setOwner(user);
+                List<Application> applist = new LinkedList<Application>();
+                applist.add(e);
+                user.addToMyApplications(applist);
 
                 message.setObject(e);
                 messageProducer.send(message);
