@@ -70,6 +70,7 @@ public class Add implements ShellCommand {
         appli.setCategory(cate);
         appli.setPrice(price);
         appli.setDescription(description);
+        appli.setValidated();
         applications.create(appli);
         return "Application "+appli.getName()+" ajoutée";
     }

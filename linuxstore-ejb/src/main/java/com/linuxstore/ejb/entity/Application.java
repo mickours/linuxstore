@@ -30,7 +30,7 @@ public class Application implements Serializable {
     private float price;
     private String filePath;
     private String imagePath;
-    private boolean available;
+    private boolean available = true;
     private boolean validated = false;
 
     @OneToMany
