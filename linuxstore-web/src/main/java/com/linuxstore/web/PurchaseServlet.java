@@ -51,12 +51,12 @@ public class PurchaseServlet extends HttpServlet {
             //TODO check this values
             String secCode = request.getParameter("securityCode");
             String month = request.getParameter("month");
-            String day = request.getParameter("day");
             String year = request.getParameter("year");
             String isOk = request.getParameter("ok");
-            if (isOk != null){
+            AppCart cart = (AppCart)session.getAttribute("cart");
+            if (isOk != null || cart.getTotalPrice()==0){
                 //associate applications with the user
-                List<Application> appToAdd = ((AppCart)session.getAttribute("cart")).getAppList();
+                List<Application> appToAdd = cart.getAppList();
                 user.addToMyApplications(appToAdd);
                 userFacade.edit(user);
                 session.removeAttribute("cart");
