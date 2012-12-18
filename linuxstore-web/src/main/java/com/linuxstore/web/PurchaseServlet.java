@@ -25,7 +25,7 @@ import javax.servlet.http.HttpSession;
  */
 @WebServlet(name = "PurchaseServlet", urlPatterns = {"/purchase"})
 public class PurchaseServlet extends HttpServlet {
-    
+
     @EJB
     private LinuxStoreUserFacadeRemote userFacade;
 
@@ -59,6 +59,7 @@ public class PurchaseServlet extends HttpServlet {
                 List<Application> appToAdd = ((AppCart)session.getAttribute("cart")).getAppList();
                 user.addToMyApplications(appToAdd);
                 userFacade.edit(user);
+                session.removeAttribute("cart");
                 request.setAttribute("confirmationMessage", "purchase_finished");
                 URLHelper.redirectTo(URLHelper.Page.confirmation, request, response);
             }

@@ -7,9 +7,11 @@ package com.linuxstore.ejb.entity;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
 /**
@@ -25,8 +27,8 @@ public class LinuxStoreUser implements Serializable {
 
     private String loginMail;
     private String password;
-    
-    @OneToMany
+
+    @ManyToMany(fetch= FetchType.EAGER)
     private List<Application> myApplications;
 
     public List<Application> getMyApplications() {
