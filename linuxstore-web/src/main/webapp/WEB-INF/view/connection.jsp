@@ -15,15 +15,15 @@
         <table id="connection">
             <tr>
                 <td><fmt:message key='user'/> :</td>
-            <td><input type="text" name="user" required></td>
+            <td><input type="text" class="input-small" placeholder="Email" name="user" required></td>
             </tr>
             <tr>
                 <td><fmt:message key='password'/> :</td>
-            <td><input type="password" name="password" required></td>
+            <td><input type="password" class="input-small" placeholder="Password" name="password" required></td>
             </tr>
             <tr>
                 <td></td>
-                <td><input class="button_connexion" type="submit" value="<fmt:message key='button_connexion'/>" ></td>
+                <td><input class="button_connexion btn" type="submit" value="<fmt:message key='button_connexion'/>" ></td>
             </tr>
         </table>
     </form>

@@ -41,7 +41,7 @@ public class ListApplication extends HttpServlet {
 
         //finding application list
         List appList;
-        String patern = request.getParameter("search");
+        String patern = request.getParameter("searchField");
         String selectedCategory = request.getParameter("category");
         String sortby = request.getParameter("sortby");
         try{

@@ -15,7 +15,7 @@ root {
 }
 
 .selected{
-    color: #d3711f;
+    color: #00E335;
 }
 
 body {
@@ -85,22 +85,34 @@ a{
     float: right;
     line-height: 1.5em;
     background: #EEEEEE;
-    color: black;
+}
+
+.headerWidget a{
+    text-decoration: none;
 }
 
 .headerWidget a:hover {
     color: dodgerblue;
     border-radius: 5px;
+    text-decoration: underline;
 }
 
 .headerWidgetC {
     width: 125px;
-    margin: 92px -197px;
+    margin: 89px -197px;
     font-size: small;
     float: right;
     line-height: 1.5em;
     background: #EEEEEE;
-    color: white;
+}
+
+.headerWidgetC a{
+    text-decoration: none;
+}
+
+.headerWidgetC a:hover{
+    color: dodgerblue;
+    text-decoration: underline;
 }
 
 /******************************************************************************/
@@ -109,7 +121,7 @@ a{
 
 
 #menu{
-    height: 45px;
+    height: 38px;
 /*    width: 1024px;*/
     background-color: dodgerblue;
 /*    background-image: linear-gradient(top, rgb(64,65,65) 8%, rgb(30,143,255) 71%);
@@ -127,8 +139,8 @@ background-image: -webkit-gradient(
 );*/
 
     margin-top: -20px;
-    line-height: 45px;
-    border-radius: 10px;
+    line-height: 38px;
+    
 }
 
 #menu li {
@@ -136,19 +148,20 @@ background-image: -webkit-gradient(
     width: 150px;
     float: left;
     text-decoration: none;
+    line-height: 38px;
+    border-right: 1px solid #EEEEEE;
 }
 #menu li:hover{
 
-    background: dodgerblue;
-    border-radius: 5px;
+    background: #1F7DD3;
+    border-right: 1px solid #EEEEEE;
 /*    background: linear-gradient(to bottom, #404141 0%,dodgerblue 100%);*/
 }
 
 #menu li.selected {
     background: #1F7DD3;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
     color: white;
+    line-height: 38px;
 }
 
 #menu ul{
@@ -172,10 +185,17 @@ background-image: -webkit-gradient(
 #indexLeftColumn table{
     text-align: left;
     padding-left: 20px;
+    border-collapse: separate;
+    border-spacing: 1px;
 }
 
 #indexLeftColumn a {
-    color: #1E90FF;
+    color: #404141;
+    text-decoration: none;
+}
+
+#indexLeftColumn a:hover {
+    text-decoration: underline;
 }
 
 #indexLeftColumn a.selected {
@@ -185,7 +205,8 @@ background-image: -webkit-gradient(
 #titleCategorie{
     font-family:  Arial, Helvetica, sans-serif;
     text-align: center;
-    color: black;
+    color: #404141;
+    margin-top: 26px;
 }
 
 /******************************************************************************/
@@ -214,20 +235,25 @@ background-image: -webkit-gradient(
 }
 
 .searchTextInput{
-    background: white;
-    width: 220px;
-    padding: 4px;
     display: inline;
-    border-radius: 10px;
 }
 
-.searchTextInput input[type="text"]
+.searchBar label{
+    display: inline;
+}
+
+.searchBar select{
+    width: 70px;
+    margin-bottom: 0px;
+}
+
+/*.searchTextInput input[type="text"]
 {
     background: transparent;
     border: 0 none;
     margin: 0;
     width: 180px;
-}
+}*/
 
 /*.searchTextInput input[type="submit"]
 {
@@ -265,9 +291,16 @@ background-image: -webkit-gradient(
     background: #404141;
     border-radius: 10px;
     color: white;
-        padding: 15px;
+     padding: 15px;
 
+}
 
+.categoryBox:hover{
+-moz-box-shadow: 5px 5px 5px 0px #9b9b9b;
+-webkit-box-shadow: 5px 5px 5px 0px #9b9b9b;
+-o-box-shadow: 5px 5px 5px 0px #9b9b9b;
+box-shadow: 5px 5px 5px 0px #9b9b9b;
+filter:progid:DXImageTransform.Microsoft.Shadow(color=#9b9b9b, Direction=134, Strength=5);
 }
 
 .categoryBox .TitleApp{
@@ -300,6 +333,10 @@ background-image: -webkit-gradient(
     color: #00F639;
 }
 
+.categoryBox a{
+    text-decoration: none;  
+}
+
 
 
 .categoryMiniBox {
@@ -311,6 +348,14 @@ background-image: -webkit-gradient(
     background: white;
     border-radius: 10px;
     border:1px solid #404141;
+}
+
+.categoryMiniBox:hover{
+   -moz-box-shadow: 5px 5px 5px 0px #9b9b9b;
+-webkit-box-shadow: 5px 5px 5px 0px #9b9b9b;
+-o-box-shadow: 5px 5px 5px 0px #9b9b9b;
+box-shadow: 5px 5px 5px 0px #9b9b9b;
+filter:progid:DXImageTransform.Microsoft.Shadow(color=#9b9b9b, Direction=134, Strength=5) 
 }
 
 .rightMiniBox{
@@ -336,9 +381,10 @@ background-image: -webkit-gradient(
 
 .descriApp{
     float: left;
-    height: 36%;
+    height: 42%;
     overflow: hidden;
     margin-top: 4%;
+    font-size: small;
 }
 
 .bottomMiniBox{
@@ -361,21 +407,16 @@ background-image: -webkit-gradient(
 }
 
 .buttonGetIT input{
-   background-color: dodgerblue;
-    border: 1px solid #335F8A;
-    border-radius: 11px;
     cursor: pointer;
     color: white;
 }
 
 .button {
     padding: 2px;
-    background-color: dodgerblue;
-    border: 1px solid #335F8A;
-    border-radius: 11px;
     cursor: pointer;
     color: white;
     margin-left: 2%;
+    margin-right: 16px;
     float: left;
 }
 
@@ -384,18 +425,16 @@ background-image: -webkit-gradient(
 /******************************************************************************/
 /*    CONNECTION AND INSCRIPTION                                                                   */
 /******************************************************************************/
-#connection {margin: 0 auto;background:#999999;border: 3px solid black;padding:15px;border-radius: 10px;}
+#connection {margin: 0 auto;border: 1px solid #E0E0E0;background-color: white; padding:15px; width:400px; }
 #connection tr {height:45px; }
-#connection input {background:white;border: 1px solid black;color:black;padding:5px;}
-#errorMessage {color:Red;border: 2px solid black;background:white;display:inline-block;padding:10px;margin-bottom:10px;}
+/*#connection input {background:white;border: 1px solid black;color:black;padding:5px;}*/
+#errorMessage {color:Red;border: 1px solid #CBC4C4;background:white;display:inline-block;padding:10px;margin-bottom:10px;}
 #successMessage {margin:10px;}
 .button_connexion{
     background-color: dodgerblue;
     border: 1px solid black;
     border-radius: 11px;
     cursor: pointer;}
-
-
 
 /******************************************************************************/
 /*    CART                                                                    */
@@ -420,8 +459,12 @@ background-image: -webkit-gradient(
     color: white;
 }
 
+.cartTable a{
+    text-decoration: none;
+}
+
 .lightBlue {
-    background-color: dodgerblue;
+    background-color: #EEEEEE;
 }
 .thApplication{
     text-align: left;
@@ -483,10 +526,30 @@ background-image: -webkit-gradient(
 #form_container
 {
 	background:#fff;
-
 	margin:0 auto;
 	text-align:left;
 	width:640px;
+        height: 230px;
+}
+
+#form_container label{
+    display: inline;
+}
+
+#form_container #element_1{
+    width: 120px;
+}
+
+#form_container #element_2_1{
+    width: 40px;
+}
+
+#form_container #element_2_3{
+    width: 40px;
+}
+
+#form_container #element_3{
+    width: 40px;
 }
 
 form ul
@@ -591,6 +654,11 @@ input.text
         text-align: left;
 }
 
+.contenu textarea{
+        max-width: 218px;
+        max-height: 200px;
+}
+
 .onglet_n
 {
         background:#bbbbbb;
@@ -624,11 +692,6 @@ input.text
 
 #submitPostApp{
     margin-left: 300px;
-    width: 70px;
-    height: 25px;
-     background-color: dodgerblue;
-    border: 1px solid #335F8A;
-    border-radius: 11px;
     cursor: pointer;
     color: white;
 }

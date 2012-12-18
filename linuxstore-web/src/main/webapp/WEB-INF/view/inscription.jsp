@@ -9,22 +9,22 @@
             </div>
         </c:otherwise>
     </c:choose>
-    <table id="connection">
+            <table  id="connection" >
         <tr>
             <td><fmt:message key='mail'/> :</td>
-        <td><input type="text" name="user" required></td>
+        <td><input type="text" class="input-small" placeholder="Email" name="user" required></td>
         </tr>
         <tr>
             <td><fmt:message key='password'/> :</td>
-        <td><input type="password" name="password" required></td>
+        <td><input type="password" class="input-small" placeholder="Password" name="password" required></td>
         </tr>
         <tr>
             <td><fmt:message key='re_password'/> :</td>
-        <td><input type="password" name="password2" required></td>
+        <td><input type="password" class="input-small" placeholder="Password" name="password2" required></td>
         </tr>
         <tr>
             <td></td>
-            <td><input class="button_connexion" type="submit" value="<fmt:message key='button_inscription'/>"></td>
+            <td><input class="button_connexion btn" type="submit" value="<fmt:message key='button_inscription'/>"></td>
         </tr>
     </table>
 </form>

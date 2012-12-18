@@ -50,12 +50,15 @@
 <c:choose>
     <c:when test="${applicationsBuyed.size() > 0}">
         <div class="titleCart"><h2><fmt:message key='your_purchase'/></h2></div>
-        <table class="cartTable">
+        <table class="cartTable table-hover">
+            <thead>
             <tr>
                 <th class="thApplication"><fmt:message key='application'/></th>
             <th><fmt:message key='actions'/></th>
             </tr>
+            </thead>
             <c:forEach var="app" items="${applicationsBuyed}" varStatus="iter">
+                <tbody>
                 <tr class="${((iter.index % 2) == 1) ? 'lightBlue' : 'white'}">
 
                     <td>
@@ -67,10 +70,10 @@
                         </a>
                     </td>
                     <td>
-                        <a class="button" href="${app.filePath}"><fmt:message key='download'/></a>
+                        <a class="button btn btn-small btn-primary" href="${app.filePath}"><fmt:message key='download'/></a>
                     </td>
                 </tr>
-
+                </tbody>
             </c:forEach>
         </table>
     </c:when>

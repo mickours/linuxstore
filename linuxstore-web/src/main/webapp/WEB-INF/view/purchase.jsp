@@ -43,7 +43,7 @@
 
             <li class="buttons">
                 <input hidden name="ok" value="ok" />
-                <input id="saveForm" class="button" type="submit" name="submit" value="Submit" />
+                <input id="saveForm" class="button btn btn-small btn-primary" type="submit" name="submit" value="Submit" />
             </li>
         </ul>
     </form>
