@@ -10,7 +10,7 @@
     </div>
     <div class="descInfoApp">
         <p>${app.description}</p>
-        <p>Poster par ${app.owner.loginMail}</p>
+        <p><fmt:message key="added_by"/> ${app.owner.loginMail}</p>
     </div>
     <div class="priceInfoApp">${app.price}&euro;</div>
     <c:choose>
@@ -23,7 +23,7 @@
             <div  class="buttonGetITInfoApp">
                 <form action="addToCart" method="POST">
                     <input type="hidden" name="appToAddId" value="${app.id}">
-                    <input type="submit" name="submitApp" value="Get It!">
+                    <input type="submit" name="submitApp" value="<fmt:message key='add_to_cart'/>">
                 </form>
             </div>
         </c:otherwise>

@@ -28,5 +28,7 @@ public interface ApplicationFacadeRemote extends AbstractFacadeRemote<Applicatio
     public List<Application> search(String patern);
 
     public Application findByName(String nom);
+    
+    public String getEmptyArchive();
 
 }

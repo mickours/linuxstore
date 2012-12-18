@@ -24,7 +24,7 @@
                 </div>
             </li>
             <li>
-                <label class="description" for="element_2">Date </label>
+                <label class="description" for="element_2"><fmt:message key="expiration_date"/>Date </label>
                 <span>
                     <input required id="element_2_1" name="month" class="element text" size="2" maxlength="2" value="" type="text"> /
                     <label for="element_2_1">MM</label>

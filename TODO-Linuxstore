@@ -4,10 +4,11 @@ TODO:
 * Faire un bouton de changement de langue
 * date expiration
 * verifié état bouton download
-* vérifié internationnalisation
+
 * vérifié mes application
 
 DONE:
+* vérifié internationnalisation
 * Bouton download OU get it dans appInfo
 * lien pour infoApp sur cart item
 * faire a propos

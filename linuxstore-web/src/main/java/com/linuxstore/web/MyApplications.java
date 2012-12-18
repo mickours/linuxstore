@@ -27,7 +27,7 @@ import javax.servlet.http.HttpSession;
 @WebServlet(name = "MyApplications", urlPatterns = {"/my_applications"})
 public class MyApplications extends HttpServlet {
 
-    
+
     @EJB
     private ApplicationFacadeRemote applicationFacade;
     /**
@@ -45,7 +45,7 @@ public class MyApplications extends HttpServlet {
         HttpSession session = request.getSession();
         LinuxStoreUser user = (LinuxStoreUser) session.getAttribute("user");
         if (user == null) {
-            session.setAttribute("backTo","my_application");
+            session.setAttribute("backTo","my_applications");
             request.setAttribute("errorMessage", "error_not_logged_applications");
             request.getRequestDispatcher("connection").forward(request, response);
         } else {
@@ -62,10 +62,10 @@ public class MyApplications extends HttpServlet {
                     i--;
                 }
             }
-            
+
             request.setAttribute("applicationsBuyed",applicationsBuyedByUser);
             request.setAttribute("applicationsOwned",applicationsOwnedByUser);
-            
+
            URLHelper.redirectTo(Page.my_applications, request, response);
         }
     }

@@ -37,8 +37,8 @@
             </div>
             <label for="sortby"><fmt:message key ="sort_by" /> :</label>
             <SELECT id="sortby" name="sortby" >
-                <OPTION VALUE="price" ${sortby eq "price"? "selected": ""}>Prix</OPTION>
-                <OPTION VALUE="name"  ${sortby eq "name"? "selected": ""}>Nom</OPTION>
+                <OPTION VALUE="price" ${sortby eq "price"? "selected": ""}><fmt:message key ="price" /></OPTION>
+                <OPTION VALUE="name"  ${sortby eq "name"? "selected": ""}><fmt:message key ="name" /></OPTION>
             </SELECT>
             
             ${empty selectedCategory? "": "<input type='hidden' name='category' value=".concat(selectedCategory).concat(" >")}

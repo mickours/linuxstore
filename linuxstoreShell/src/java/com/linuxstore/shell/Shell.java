@@ -51,7 +51,7 @@ public class Shell {
         commands.add(new Show(applications,this));
         commands.add(new ShowUser(admins, users));
         commands.add(new Validate(applications));
-        if (admins.findAll().size() == 0) {
+        if (admins.findAll().isEmpty()) {
             LinuxStoreAdmin root = new LinuxStoreAdmin();
             root.setLoginMail("LinuxStore");
             root.setPassword("linuxroot");
@@ -119,10 +119,6 @@ public class Shell {
             newUser.setPassword("moc");
             users.create(newUser);
             return "utilisateur créé";
-//        } else if (cmd.equals("admin") && params.length == 1 && params[0].equals("root")) {
-//            user = new LinuxStoreAdmin();
-//            user.setLoginMail("LinuxStore");
-//            return "Mode Admin r00t activé.";
         } else {
             for (ShellCommand command : commands) {
                 if (cmd.equals(command.getName())) {
@@ -221,7 +217,7 @@ public class Shell {
     public static void main(String[] args) {
         Shell shell = new Shell();
         Scanner sc = new Scanner(System.in).useDelimiter("\n");
-        System.out.println("<--- LinuwStore shell --->");
+        System.out.println("<--- LinuxStore shell --->");
         while (shell.isRunning) {
             String entry ="";
             if (shell.isAdminMode()) {
