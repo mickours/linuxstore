@@ -54,6 +54,9 @@ public class ListApplication extends HttpServlet {
             else {
                 appList = applicationFacade.findAll();
             }
+            //filter by disponibility
+            appList = applicationFacade.filterByDisponibility(appList);
+            
             //filter by category
             if (selectedCategory != null && Category.valueOf(selectedCategory)!=null){
                 appList = applicationFacade.filter(appList,Category.valueOf(selectedCategory));

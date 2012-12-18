@@ -17,6 +17,8 @@ public interface ApplicationFacadeRemote extends AbstractFacadeRemote<Applicatio
 
     public List<Application> filter(List<Application> appList, Application.Category categ);
 
+    public List<Application> filterByDisponibility(List<Application> appList);
+    
     public int categoryCount(String patern,Application.Category categ);
 
     public List<Application> sortByPrice(List<Application> appList);

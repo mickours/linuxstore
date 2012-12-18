@@ -10,14 +10,15 @@
             </tr>
             <c:forEach var="app" items="${applicationsOwned}" varStatus="iter">
                 <tr class="${((iter.index % 2) == 1) ? 'lightBlue' : 'white'}">
-                    <a href="<c:url value='infoApp?idapp=${app.id}' />">
+
                     <td>
-                        <div class="nameImageAppTab">
-                            <img width="32px" height="32px" src=${empty app.imagePath ? "Pictures/des.png"  : app.imagePath}>
-                            <span> ${app.name}</span>
-                        </div>
+                        <a href="<c:url value='infoApp?idapp=${app.id}' />">
+                            <div class="nameImageAppTab">
+                                <img width="32px" height="32px" src=${empty app.imagePath ? "Pictures/des.png"  : app.imagePath}>
+                                <span> ${app.name}</span>
+                            </div>
+                        </a>
                     </td>
-                    </a>
                     <td>
                 <c:choose>
                     <c:when test="${app.validated}">
@@ -56,11 +57,14 @@
             </tr>
             <c:forEach var="app" items="${applicationsBuyed}" varStatus="iter">
                 <tr class="${((iter.index % 2) == 1) ? 'lightBlue' : 'white'}">
+
                     <td>
-                        <div class="nameImageAppTab">
-                            <img width="32px" height="32px" src=${empty app.imagePath ? "Pictures/des.png"  : app.imagePath}>
-                            <span> ${app.name}</span>
-                        </div>
+                        <a href="<c:url value='infoApp?idapp=${app.id}' />">
+                            <div class="nameImageAppTab">
+                                <img width="32px" height="32px" src=${empty app.imagePath ? "Pictures/des.png"  : app.imagePath}>
+                                <span> ${app.name}</span>
+                            </div>
+                        </a>
                     </td>
                     <td>
                         <a class="button" href="${app.filePath}"><fmt:message key='download'/></a>

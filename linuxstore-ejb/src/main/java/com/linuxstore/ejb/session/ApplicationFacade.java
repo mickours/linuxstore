@@ -34,6 +34,17 @@ public class ApplicationFacade extends AbstractFacade<Application> implements Ap
         super(Application.class);
     }
 
+    @Override
+    public List<Application> filterByDisponibility(List<Application> appList) {
+        List<Application> filteredList = new LinkedList<Application>();
+        for (Application application : appList) {
+            if (application.isValidated() && application.isAvailable()) {
+                filteredList.add(application);
+            }
+        }
+        return filteredList;
+    }
+
     @ApplicationException
     public class AppException extends RuntimeException {
         public AppException(String message) {
@@ -71,6 +82,7 @@ public class ApplicationFacade extends AbstractFacade<Application> implements Ap
         else{
             appList = search(patern);
         }
+        appList = filterByDisponibility(appList);
         for (Application app : appList){
             if (categ.equals(app.getCategory())){
                 nb++;

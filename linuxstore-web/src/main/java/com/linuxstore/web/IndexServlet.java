@@ -48,6 +48,7 @@ public class IndexServlet extends HttpServlet {
             cats.add(new CategoriesView(c.toString(), applicationFacade.categoryCount(null, c)));
         }
         List<Application> app=applicationFacade.findAll();
+        app = applicationFacade.filterByDisponibility(app);
         try{
             Application topGame = applicationFacade.filter(app, Application.Category.Jeux).get(0);
             Application topTheme = applicationFacade.filter(app, Application.Category.Themes).get(0);
