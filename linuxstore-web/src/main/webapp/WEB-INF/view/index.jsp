@@ -10,7 +10,7 @@
         </div>
         <div class="descriApp"> ${appTopGame.description}</div>
         <div class="bottomMiniBox">
-            <span class="priceApp">${appTopGame.price}</span>
+            <span class="priceApp">${appTopGame.price} &euro;</span>
             <span class="buttonGetIT"><form action="addToCart" method="POST">
                     <input type="hidden" name="appToAddId" value="${appTopGame.id}">
                     <input type="submit" name="submitApp" value="Get It!">
@@ -27,7 +27,7 @@
         </div>
         <div class="descriApp"> ${appTopTheme.description}</div>
         <div class="bottomMiniBox">
-            <span class="priceApp">${appTopTheme.price}</span>
+            <span class="priceApp">${appTopTheme.price} &euro;</span>
             <span class="buttonGetIT"><form action="addToCart" method="POST">
                     <input type="hidden" name="appToAddId" value="${appTopMulti.id}">
                     <input type="submit" name="submitApp" value="Get It!">
@@ -44,7 +44,7 @@
         </div>
         <div class="descriApp"> ${appTopAccessoire.description}</div>
         <div class="bottomMiniBox">
-            <span class="priceApp">${appTopAccessoire.price}</span>
+            <span class="priceApp">${appTopAccessoire.price} &euro;</span>
             <span class="buttonGetIT"><form action="addToCart" method="POST">
                     <input type="hidden" name="appToAddId" value="${appTopAccessoire.id}">
                     <input type="submit" name="submitApp" value="Get It!">
@@ -62,7 +62,7 @@
         </div>
         <div class="descriApp"> ${appTopMulti.description}</div>
         <div class="bottomMiniBox">
-            <span class="priceApp">${appTopMulti.price}</span>
+            <span class="priceApp">${appTopMulti.price} &euro;</span>
             <span class="buttonGetIT"><form action="addToCart" method="POST">
                     <input type="hidden" name="appToAddId" value="${appTopMulti.id}">
                     <input type="submit" name="submitApp" value="Get It!">

@@ -35,7 +35,7 @@ body {
 }
 
 #main {
-    background: #eee;
+    background: #EEEEEE;
     min-height: 640px;
 }
 
@@ -49,11 +49,11 @@ a{
 
 #header {
     height: 150px;
-    background: #404141;
+    background: #EEEEEE;
 }
 
 #header a{
-    color: white;
+    color: black;
 }
 
 #logo{
@@ -75,7 +75,7 @@ a{
 
 #widgetBar {
     height: 50px;
-    background: #404141;
+    background: #EEEEEE;
 }
 
 .headerWidget {
@@ -84,12 +84,12 @@ a{
     font-size: small;
     float: right;
     line-height: 1.5em;
-    background: #404141;
-    color: white;
+    background: #EEEEEE;
+    color: black;
 }
 
 .headerWidget a:hover {
-    background: dodgerblue;
+    color: dodgerblue;
     border-radius: 5px;
 }
 
@@ -99,7 +99,7 @@ a{
     font-size: small;
     float: right;
     line-height: 1.5em;
-    background: #404141;
+    background: #EEEEEE;
     color: white;
 }
 
@@ -111,8 +111,8 @@ a{
 #menu{
     height: 45px;
 /*    width: 1024px;*/
-    /*background-color: dodgerblue;*/
-    background-image: linear-gradient(top, rgb(64,65,65) 8%, rgb(30,143,255) 71%);
+    background-color: dodgerblue;
+/*    background-image: linear-gradient(top, rgb(64,65,65) 8%, rgb(30,143,255) 71%);
 background-image: -o-linear-gradient(top, rgb(64,65,65) 8%, rgb(30,143,255) 71%);
 background-image: -moz-linear-gradient(top, rgb(64,65,65) 8%, rgb(30,143,255) 71%);
 background-image: -webkit-linear-gradient(top, rgb(64,65,65) 8%, rgb(30,143,255) 71%);
@@ -124,10 +124,11 @@ background-image: -webkit-gradient(
 	left bottom,
 	color-stop(0.08, rgb(64,65,65)),
 	color-stop(0.71, rgb(30,143,255))
-);
+);*/
 
     margin-top: -20px;
     line-height: 45px;
+    border-radius: 10px;
 }
 
 #menu li {
@@ -166,7 +167,6 @@ background-image: -webkit-gradient(
     min-height: 496px;
     width: 240px;
     float: left;
-    border: 1px solid #404141;
 }
 
 #indexLeftColumn table{
@@ -197,7 +197,6 @@ background-image: -webkit-gradient(
     min-height: 500px;
     width: 782px;
     float: right;
-    border-top: 1px solid #404141;
 }
 
 .searchBar{
@@ -302,10 +301,6 @@ background-image: -webkit-gradient(
 }
 
 
-
-a:link {
-    text-decoration: none;
-}
 
 .categoryMiniBox {
     height: 150px;
