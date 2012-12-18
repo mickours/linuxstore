@@ -15,9 +15,11 @@ import com.linuxstore.ejb.remote.ApplicationFacadeRemote;
 public class Add implements ShellCommand {
     
     private static ApplicationFacadeRemote applications;
+    private Shell shell;
     
-    public Add(ApplicationFacadeRemote facade) {
+    public Add(ApplicationFacadeRemote facade,Shell shell) {
         applications = facade;
+        this.shell = shell;
     }
 
     @Override
@@ -70,14 +72,15 @@ public class Add implements ShellCommand {
         appli.setCategory(cate);
         appli.setPrice(price);
         appli.setDescription(description);
-        appli.setValidated();
+        
+        appli.setOwner(shell.getLinuxStoreUser());
         applications.create(appli);
         return "Application "+appli.getName()+" ajoutée";
     }
 
     @Override
     public AccessType getAccessType() {
-        return AccessType.AdminOnly;
+        return AccessType.UserOnly;
     }
     
 }

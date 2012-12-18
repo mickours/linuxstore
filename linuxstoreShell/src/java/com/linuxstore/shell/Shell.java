@@ -40,7 +40,7 @@ public class Shell {
         isRunning = true;
         user = null;
         commands = new ArrayList<ShellCommand>();
-        commands.add(new Add(applications));
+        commands.add(new Add(applications,this));
         commands.add(new AddUser(admins, users));
         commands.add(new Clear(applications));
         commands.add(new Connect(this,admins,users));
@@ -48,8 +48,16 @@ public class Shell {
         commands.add(new Remove(applications));
         commands.add(new RemoveUser(this,admins, users));
         commands.add(new Search(applications));
-        commands.add(new Show(applications));
+        commands.add(new Show(applications,this));
         commands.add(new ShowUser(admins, users));
+        commands.add(new Validate(applications));
+        if (admins.findAll().size() == 0) {
+            LinuxStoreAdmin root = new LinuxStoreAdmin();
+            root.setLoginMail("LinuxStore");
+            root.setPassword("linuxroot");
+            admins.create(root);
+        }
+        
 
     }
 
@@ -111,9 +119,10 @@ public class Shell {
             newUser.setPassword("moc");
             users.create(newUser);
             return "utilisateur créé";
-        } else if (cmd.equals("admin") && params.length == 1 && params[0].equals("root")) {
-            user = new LinuxStoreAdmin();
-            return "Mode Admin r00t activé.";
+//        } else if (cmd.equals("admin") && params.length == 1 && params[0].equals("root")) {
+//            user = new LinuxStoreAdmin();
+//            user.setLoginMail("LinuxStore");
+//            return "Mode Admin r00t activé.";
         } else {
             for (ShellCommand command : commands) {
                 if (cmd.equals(command.getName())) {
