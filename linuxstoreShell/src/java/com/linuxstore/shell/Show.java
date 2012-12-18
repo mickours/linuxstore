@@ -51,7 +51,7 @@ public class Show implements ShellCommand {
         String catRecherche = "applications";
         if (params.length > 0) {
             if (params[0].equals("unvalidated") && LinuxStoreAdmin.class.equals(shell.getLinuxStoreUser().getClass())) {
-                List<Application> newListe = new LinkedList<Application>(); 
+                List<Application> newListe = new LinkedList<Application>();
                 for (Application application : liste) {
                     if (!application.isValidated()) {
                         newListe.add(application);
@@ -70,11 +70,13 @@ public class Show implements ShellCommand {
         }
         String out = "Liste des " + catRecherche + " : \n";
         for (Application application : liste) {
-            out += application.getName() + " (" + application.getCategory().name() + ") Prix : " + application.getPrice() + " euros";
+            out += application.getName() + " (" + application.getCategory().name() + ") Prix : " + application.getPrice() + " euros\n";
             if (!application.isValidated()) {
-                out += " non validée";
+                out += "Application non validée\n";
             }
-            out += "\n";
+            if (application.getOwner() != null) {
+                out += "Postée par : " + application.getOwner().getLoginMail()+".\n";
+            }
             out += "\tdescription : " + application.getDescription() + "\n\n";
         }
         return out;
