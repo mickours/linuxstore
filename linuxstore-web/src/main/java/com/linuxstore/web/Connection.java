@@ -44,7 +44,7 @@ public class Connection extends HttpServlet {
             throws ServletException, IOException {
 
         HttpSession session = request.getSession();
-        LinuxStoreUser user = (LinuxStoreUser) session.getAttribute("user");
+        LinuxStoreUser user;
 
         String userName = request.getParameter("user");
         String password = request.getParameter("password");
@@ -65,11 +65,11 @@ public class Connection extends HttpServlet {
             }
 
         }
-        if (user != null) {
+        if (session.getAttribute("user") != null) {
             String to = (String) session.getAttribute("backTo");
             session.removeAttribute("backTo");
             if(to==null){
-                to="my_applications";
+                to="/my_applications";
             }
             request.getRequestDispatcher(to).forward(request, response);
         }
