@@ -7,10 +7,14 @@ package com.linuxstore.ejb.session;
 import com.linuxstore.ejb.remote.ApplicationFacadeRemote;
 import com.linuxstore.ejb.entity.Application;
 import com.linuxstore.ejb.entity.Application.Category;
+import java.io.File;
+import java.io.IOException;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.ejb.ApplicationException;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -43,6 +47,18 @@ public class ApplicationFacade extends AbstractFacade<Application> implements Ap
             }
         }
         return filteredList;
+    }
+
+    @Override
+    public String getEmptyArchive() {
+        File archive = new File("app-2548-556.662.zip");
+        try {
+            archive.createNewFile();
+            return archive.getCanonicalPath();
+        } catch (IOException ex) {
+            throw new AppException("Problem while getting empty archive");
+        }
+        
     }
 
     @ApplicationException

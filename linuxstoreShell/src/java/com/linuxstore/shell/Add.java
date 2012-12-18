@@ -7,6 +7,9 @@ package com.linuxstore.shell;
 import com.linuxstore.ejb.entity.Application;
 import com.linuxstore.ejb.entity.Application.Category;
 import com.linuxstore.ejb.remote.ApplicationFacadeRemote;
+import java.util.Arrays;
+import java.util.List;
+import org.apache.commons.fileupload.disk.DiskFileItem;
 
 /**
  *
@@ -14,6 +17,8 @@ import com.linuxstore.ejb.remote.ApplicationFacadeRemote;
  */
 public class Add implements ShellCommand {
 
+    public static List<String> listOfAppExtensions = Arrays.asList("zip", "gz", "tar", "7z");
+    public static List<String> listOfImgExtensions = Arrays.asList("jpg", "jpeg", "png", "gif");
     private static ApplicationFacadeRemote applications;
     private Shell shell;
 
@@ -34,7 +39,7 @@ public class Add implements ShellCommand {
 
     @Override
     public String getDescription() {
-        String description = "add name category price description - ajoute une application de nom name, de categorie category, de prix price et de description description\n";
+        String description = getShortDescription()+"\n";
         description += "Arguments :\n";
         description += "\tname - Nom de l'application que l'on va ajouter. Ce nom doit être unique pour chaque application.\n";
         description += "\tcategory - La categorie de l'application. Peut prendre les valeurs";
@@ -50,7 +55,7 @@ public class Add implements ShellCommand {
     @Override
     public String execute(String[] params) {
                 if (params.length < 4) {
-            return "Erreur de syntaxe : add name category price description";
+            return "Erreur de syntaxe : add name category price url description";
         }
         String name = params[0];
         if (applications.findByName(name) != null) {
@@ -73,8 +78,11 @@ public class Add implements ShellCommand {
         appli.setPrice(price);
         appli.setDescription(description);
         applications.create(appli);
+        appli = applications.findByName(appli.getName());
         appli.setOwner(shell.getLinuxStoreUser());
+        appli.setFile(applications.getEmptyArchive());
         applications.edit(appli);
+        
         return "Application "+appli.getName()+" ajoutée";
     }
 
