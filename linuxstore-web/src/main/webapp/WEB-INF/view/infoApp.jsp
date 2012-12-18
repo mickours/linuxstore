@@ -15,16 +15,16 @@
     <div class="priceInfoApp">${app.price}&euro;</div>
     <c:choose>
         <c:when test="${isPayed}">
+            <div  class="buttonDownloadITInfoApp">
+                <a class="button" href="${app.filePath}"><fmt:message key="download"/></a>
+            </div>
+        </c:when>
+        <c:otherwise>
             <div  class="buttonGetITInfoApp">
                 <form action="addToCart" method="POST">
                     <input type="hidden" name="appToAddId" value="${app.id}">
                     <input type="submit" name="submitApp" value="Get It!">
                 </form>
-            </div>
-        </c:when>
-        <c:otherwise>
-            <div  class="buttonDownloadITInfoApp">
-                <a class="button" href="${app.filePath}"><fmt:message key="download"/></a>
             </div>
         </c:otherwise>
     </c:choose>

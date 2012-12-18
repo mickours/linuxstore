@@ -87,22 +87,31 @@ public class PostApplication extends HttpServlet {
                 messageProducer.send(message);
 
             } catch (Exception ex) {
-                Logger.getLogger(PostApplication.class.getName()).log(Level.SEVERE, null, ex);
-                msg = "application_not_posted";
+                msg=ex.getMessage();
+//                msg = "application_not_posted";
             }
             finally{
                 try {
                     messageProducer.close();
                     connection.close();
-                    request.setAttribute("confirmationMessage", msg);
-                    URLHelper.redirectTo(Page.confirmation, request, response);
                 } catch (JMSException ex) {
-                    //fuck that
+                    //do nothing
                 }
+            }
+            if (msg.equals("application_posted")){
+                request.setAttribute("confirmationMessage", msg);
+                URLHelper.redirectTo(Page.confirmation, request, response);
+            }
+            else {
+                request.setAttribute("errorMessage", msg);
+                request.setAttribute("categories", Category.values());
+                URLHelper.redirectTo(Page.post_application, request, response);
             }
         }
         //access to form
         else {
+            request.setAttribute("fileTypes", UploadFileHelper.listOfAppExtensions);
+            request.setAttribute("imgTypes", UploadFileHelper.listOfImgExtensions);
             request.setAttribute("categories", Category.values());
             URLHelper.redirectTo(Page.post_application, request, response);
         }

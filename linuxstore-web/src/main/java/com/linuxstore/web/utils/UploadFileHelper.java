@@ -28,10 +28,11 @@ public class UploadFileHelper {
         DiskFileItemFactory fileItemFactory = new DiskFileItemFactory();
         ServletFileUpload uploadHandler = new ServletFileUpload(fileItemFactory);
         List items = uploadHandler.parseRequest(request);
+        String error = "";
 
         new File(servletPath+applications).mkdirs();
         new File(servletPath+image).mkdirs();
-        
+
         Iterator itr = items.iterator();
         while (itr.hasNext()) {
             DiskFileItem item = (DiskFileItem) itr.next();
@@ -50,22 +51,34 @@ public class UploadFileHelper {
 
                 String base = null;
                 File file = null;
-                if (listOfAppExtensions.contains(fileExtensionName)) {
+
+                if (item.getFieldName().equals("file") && FilenameUtils.isExtension(fileItem.getName(), listOfAppExtensions)){
                     base = servletPath+applications;
                     File tmp = new File(fileItem.getName());
                     file = new File(base, tmp.getName());
                     app.setFile(applications+file.getName());
-                } else if (listOfImgExtensions.contains(fileExtensionName)) {
+                } if (item.getFieldName().equals("icon") && FilenameUtils.isExtension(fileItem.getName(), listOfImgExtensions)) {
                     base = servletPath+image;
                     File tmp = new File(fileItem.getName());
                     file = new File(base, tmp.getName());
                     app.setImagePath(image+file.getName());
                 }
                 if (base == null) {
-                    throw new Exception("Unsuported files");
+                    error += "the "+fileExtensionName+" file type is not supported";
+                    if (item.getFieldName().equals("file")){
+                        error += " for the application file<br/>";
+                    }
+                    else if (item.getFieldName().equals("icon")){
+                        error += " for the icon file<br/>";
+                    }
                 }
-                item.write(file);
+                else{
+                    item.write(file);
+                }
             }
+        }
+        if (!error.isEmpty()){
+            throw new Exception(error);
         }
     }
 }
