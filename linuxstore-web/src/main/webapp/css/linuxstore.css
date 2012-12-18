@@ -707,3 +707,23 @@ input.text
     cursor: pointer;
     color: white;
 }
+
+
+/******************************************************************************/
+/**  About                                                                    */
+/******************************************************************************/
+
+.apropos1{
+    padding: 30px;
+    text-align: justify;
+}
+
+.apropos2{
+    padding-left: 30px;
+    padding-right: 30px;
+    text-align: justify;
+}
+
+.logoPolytech{
+    margin-top: 3%;
+}
