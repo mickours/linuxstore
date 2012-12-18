@@ -59,6 +59,7 @@ public class PurchaseServlet extends HttpServlet {
                 List<Application> appToAdd = ((AppCart)session.getAttribute("cart")).getAppList();
                 user.addToMyApplications(appToAdd);
                 userFacade.edit(user);
+                session.setAttribute("user", user);
                 session.removeAttribute("cart");
                 request.setAttribute("confirmationMessage", "purchase_finished");
                 URLHelper.redirectTo(URLHelper.Page.confirmation, request, response);

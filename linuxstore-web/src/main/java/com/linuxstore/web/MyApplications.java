@@ -11,6 +11,7 @@ import com.linuxstore.web.utils.URLHelper;
 import com.linuxstore.web.utils.URLHelper.Page;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -48,13 +49,23 @@ public class MyApplications extends HttpServlet {
             request.setAttribute("errorMessage", "error_not_logged_applications");
             request.getRequestDispatcher("connection").forward(request, response);
         } else {
-            ArrayList<Application> applicationsOfUser = new ArrayList<Application>() ;
-            for (Application app : applicationFacade.findAll()) {
-                if (user.equals(app.getOwner())) {
-                    applicationsOfUser.add(app);
+            List<Application> applicationsBuyedByUser = new ArrayList<Application>()  ;
+            for (Application application : user.getMyApplications()) {
+                applicationsBuyedByUser.add(application);
+            }
+            List<Application> applicationsOwnedByUser = new ArrayList<Application>();
+            for (int i = 0 ; i < applicationsBuyedByUser.size();i++) {
+                if (user.equals(applicationsBuyedByUser.get(i).getOwner())) {
+                    applicationsOwnedByUser.add(applicationsBuyedByUser.get(i));
+                    request.setAttribute("debug",applicationsBuyedByUser.get(i));
+                    applicationsBuyedByUser.remove(i);
+                    i--;
                 }
             }
-            request.setAttribute("applications",applicationsOfUser);
+            
+            request.setAttribute("applicationsBuyed",applicationsBuyedByUser);
+            request.setAttribute("applicationsOwned",applicationsOwnedByUser);
+            
            URLHelper.redirectTo(Page.my_applications, request, response);
         }
     }
