@@ -2,11 +2,18 @@
 
 TODO:
 * Faire un bouton de changement de langue
-* date expiration
 * verifié état bouton download si non validé
-* vérifié mes application
+* formulaire poster à revoir
+* revoir mise en page tableau my_applications 
+* redirection vers mes_applications pour poster et purchase reussi
+(* agrandir div connecion en haut à droite pour evité retour à la ligne)
+
 
 DONE:
+* remonter panier
+* gerer problème de mise en page infoApp quand petite description
+* vérifié mes application
+* taille des champs connection
 * vérifié internationnalisation
 * Bouton download OU get it dans appInfo
 * lien pour infoApp sur cart item

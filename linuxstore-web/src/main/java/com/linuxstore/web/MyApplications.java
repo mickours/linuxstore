@@ -27,9 +27,9 @@ import javax.servlet.http.HttpSession;
 @WebServlet(name = "MyApplications", urlPatterns = {"/my_applications"})
 public class MyApplications extends HttpServlet {
 
-
     @EJB
     private ApplicationFacadeRemote applicationFacade;
+
     /**
      * Processes requests for both HTTP
      * <code>GET</code> and
@@ -45,7 +45,7 @@ public class MyApplications extends HttpServlet {
         HttpSession session = request.getSession();
         LinuxStoreUser user = (LinuxStoreUser) session.getAttribute("user");
         if (user == null) {
-            session.setAttribute("backTo","my_applications");
+            session.setAttribute("backTo", "my_applications");
             request.setAttribute("errorMessage", "error_not_logged_applications");
             request.getRequestDispatcher("connection").forward(request, response);
         } else {
@@ -54,10 +54,9 @@ public class MyApplications extends HttpServlet {
 
             for (Application application : user.getMyApplications()) {
                 Application app = applicationFacade.find(application.getId());
-                if(app.getOwner()==user){
+                if (app.getOwner().equals(user)){
                     applicationsOwnedByUser.add(app);
-                }
-                else{
+                } else {
                     applicationsBuyedByUser.add(app);
                 }
             }
@@ -70,10 +69,10 @@ public class MyApplications extends HttpServlet {
 //                }
 //            }
 
-            request.setAttribute("applicationsBuyed",applicationsBuyedByUser);
-            request.setAttribute("applicationsOwned",applicationsOwnedByUser);
+            request.setAttribute("applicationsBuyed", applicationsBuyedByUser);
+            request.setAttribute("applicationsOwned", applicationsOwnedByUser);
 
-           URLHelper.redirectTo(Page.my_applications, request, response);
+            URLHelper.redirectTo(Page.my_applications, request, response);
         }
     }
 

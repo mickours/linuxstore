@@ -10,8 +10,6 @@ import com.linuxstore.ejb.remote.ApplicationFacadeRemote;
 import com.linuxstore.web.utils.URLHelper;
 import com.linuxstore.web.utils.URLHelper.Page;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.List;
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -46,7 +44,7 @@ public class infoAppServlet extends HttpServlet {
         request.setAttribute("app", app);
 
         LinuxStoreUser user = (LinuxStoreUser) request.getSession().getAttribute("user");
-        boolean isPayed = user != null && user.getMyApplications().contains(app);
+        boolean isPayed = (user != null && user.getMyApplications().contains(app));
         request.setAttribute("isPayed", isPayed);
         URLHelper.redirectTo(Page.infoApp,request, response);
     }

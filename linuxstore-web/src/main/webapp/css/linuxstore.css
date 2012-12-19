@@ -99,7 +99,7 @@ a{
 
 .headerWidgetC {
     width: 125px;
-    margin: 89px -197px;
+    margin: 85px -197px;
     font-size: small;
     float: right;
     line-height: 1.5em;
@@ -140,7 +140,7 @@ background-image: -webkit-gradient(
 
     margin-top: -20px;
     line-height: 38px;
-    
+
 }
 
 #menu li {
@@ -334,7 +334,7 @@ filter:progid:DXImageTransform.Microsoft.Shadow(color=#9b9b9b, Direction=134, St
 }
 
 .categoryBox a{
-    text-decoration: none;  
+    text-decoration: none;
 }
 
 
@@ -355,7 +355,7 @@ filter:progid:DXImageTransform.Microsoft.Shadow(color=#9b9b9b, Direction=134, St
 -webkit-box-shadow: 5px 5px 5px 0px #9b9b9b;
 -o-box-shadow: 5px 5px 5px 0px #9b9b9b;
 box-shadow: 5px 5px 5px 0px #9b9b9b;
-filter:progid:DXImageTransform.Microsoft.Shadow(color=#9b9b9b, Direction=134, Strength=5) 
+filter:progid:DXImageTransform.Microsoft.Shadow(color=#9b9b9b, Direction=134, Strength=5)
 }
 
 .rightMiniBox{
@@ -727,7 +727,7 @@ input.text
 .descInfoApp{
     float: left;
     margin-left: 27%;
-    margin-top: -92px;
+    /*margin-top: -92px;*/
     margin-right: 14%;
     text-align: justify;
     min-width: 500px;

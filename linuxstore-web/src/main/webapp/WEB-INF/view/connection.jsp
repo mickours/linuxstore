@@ -7,7 +7,7 @@
             </c:when>
             <c:otherwise>
                 <div id="errorMessage">
-                    <!--<fmt:message key="error"/> :--> 
+                    <!--<fmt:message key="error"/> :-->
                     <fmt:message key="${errorMessage}"/>.
                 </div>
             </c:otherwise>
@@ -15,11 +15,11 @@
         <table id="connection">
             <tr>
                 <td><fmt:message key='user'/> :</td>
-            <td><input type="text" class="input-small" placeholder="Email" name="user" required></td>
+            <td><input type="text" class="input-medium" placeholder="Email" name="user" required></td>
             </tr>
             <tr>
                 <td><fmt:message key='password'/> :</td>
-            <td><input type="password" class="input-small" placeholder="Password" name="password" required></td>
+            <td><input type="password" class="input-medium" placeholder="Password" name="password" required></td>
             </tr>
             <tr>
                 <td></td>
