@@ -49,19 +49,26 @@ public class MyApplications extends HttpServlet {
             request.setAttribute("errorMessage", "error_not_logged_applications");
             request.getRequestDispatcher("connection").forward(request, response);
         } else {
-            List<Application> applicationsBuyedByUser = new ArrayList<Application>()  ;
-            for (Application application : user.getMyApplications()) {
-                applicationsBuyedByUser.add(application);
-            }
+            List<Application> applicationsBuyedByUser = new ArrayList<Application>();
             List<Application> applicationsOwnedByUser = new ArrayList<Application>();
-            for (int i = 0 ; i < applicationsBuyedByUser.size();i++) {
-                if (user.equals(applicationsBuyedByUser.get(i).getOwner())) {
-                    applicationsOwnedByUser.add(applicationsBuyedByUser.get(i));
-                    request.setAttribute("debug",applicationsBuyedByUser.get(i));
-                    applicationsBuyedByUser.remove(i);
-                    i--;
+
+            for (Application application : user.getMyApplications()) {
+                Application app = applicationFacade.find(application.getId());
+                if(app.getOwner()==user){
+                    applicationsOwnedByUser.add(app);
+                }
+                else{
+                    applicationsBuyedByUser.add(app);
                 }
             }
+//            for (int i = 0 ; i < applicationsBuyedByUser.size();i++) {
+//                if (user.equals(applicationsBuyedByUser.get(i).getOwner())) {
+//                    applicationsOwnedByUser.add(applicationsBuyedByUser.get(i));
+//                    request.setAttribute("debug",applicationsBuyedByUser.get(i));
+//                    applicationsBuyedByUser.remove(i);
+//                    i--;
+//                }
+//            }
 
             request.setAttribute("applicationsBuyed",applicationsBuyedByUser);
             request.setAttribute("applicationsOwned",applicationsOwnedByUser);
