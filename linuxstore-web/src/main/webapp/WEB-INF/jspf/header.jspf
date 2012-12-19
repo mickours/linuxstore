@@ -1,8 +1,13 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<fmt:setLocale value='fr'/>
-<fmt:setBundle basename='resources.messages'/>
+<!--<fmt:setLocale value='en'/>
+-->
+
+<%-- Set language based on user's choice --%>
+<c:if test="${!empty language}">
+    <fmt:setLocale value="${language}"/>
+</c:if>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
@@ -11,9 +16,9 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="stylesheet" type="text/css" href="css/linuxstore.css"> 
+        <link rel="stylesheet" type="text/css" href="css/linuxstore.css">
         <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
-               
+
         <title>Linux Store</title>
     </head>
     <body>
@@ -22,6 +27,64 @@
                 <div id="widgetBar">
 
                     <div class="headerWidget">
+                        <%-- language selection widget --%>
+                        <!--                        <c:choose>
+                        <%-- When user hasn't explicitly set language,
+                             render toggle according to browser's preferred locale --%>
+                        <c:when test="${empty sessionScope['javax.servlet.jsp.jstl.fmt.locale.session']}">-->
+                        <c:choose>
+                            <c:when test="${language ne 'en'}">
+                                français
+                            </c:when>
+                            <c:otherwise>
+                                <c:url var="url" value="chooseLanguage">
+                                    <c:param name="language" value="fr"/>
+                                </c:url>
+                                <a href="${url}">français</a>
+                            </c:otherwise>
+                        </c:choose> |
+
+                        <c:choose>
+                            <c:when test="${language eq 'en'}">
+                                english
+                            </c:when>
+                            <c:otherwise>
+                                <c:url var="url" value="chooseLanguage">
+                                    <c:param name="language" value="en"/>
+                                </c:url>
+                                <a href="${url}">english</a>
+                            </c:otherwise>
+                        </c:choose>
+                            <br/>
+                        <!--                            </c:when>
+
+                        <%-- Otherwise, render widget according to the set locale --%>
+                        <c:otherwise>
+                            <c:choose>
+                                <c:when test="${sessionScope['javax.servlet.jsp.jstl.fmt.locale.session'] ne 'en'}">
+                                    français
+                                </c:when>
+                                <c:otherwise>
+                                    <c:url var="url" value="chooseLanguage">
+                                        <c:param name="language" value="fr"/>
+                                    </c:url>
+                                    <div class="bubble"><a href="${url}">français</a></div>
+                                </c:otherwise>
+                            </c:choose> |
+
+                            <c:choose>
+                                <c:when test="${sessionScope['javax.servlet.jsp.jstl.fmt.locale.session'] eq 'en'}">
+                                    english
+                                </c:when>
+                                <c:otherwise>
+                                    <c:url var="url" value="chooseLanguage">
+                                        <c:param name="language" value="en"/>
+                                    </c:url>
+                                    <div class="bubble"><a href="${url}">english</a></div>
+                                </c:otherwise>
+                            </c:choose>
+                        </c:otherwise>
+                    </c:choose>-->
 
                         <c:choose>
                             <c:when test="${user != null}">
@@ -54,9 +117,9 @@
                 </div>
                 <div id="logo">
                     <a href="index.jsp">
-<!--                        <img src="Pictures/logoSsFondNiTitreG.png" id="logoG" alt="Linux Store logo">
-                        <img src="#" alt="Linux Store" id="logoText">
-                        <img src="Pictures/logoSsFondNiTitreD.png" id="logoD" alt="Linux Store logo">-->
+                        <!--                        <img src="Pictures/logoSsFondNiTitreG.png" id="logoG" alt="Linux Store logo">
+                                                <img src="#" alt="Linux Store" id="logoText">
+                                                <img src="Pictures/logoSsFondNiTitreD.png" id="logoD" alt="Linux Store logo">-->
                         <img src="Pictures/logoFinal.png" alt="Linux Store logo">
                     </a>
                 </div>
