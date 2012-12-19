@@ -11,7 +11,7 @@
             <span class="priceApp">${app.price} &euro;</span>
             <span class="buttonGetIT"><form action="addToCart" method="POST">
                     <input type="hidden" name="appToAddId" value="${app.id}">
-                    <input type="submit" class="btn btn-small btn-primary" name="submitApp" value="Get It!">
+                    <input type="submit" class="btn btn-small btn-primary" name="submitApp" value="<fmt:message key='add_to_cart'/>">
                 </form></span></div>
          </a>
     </div>

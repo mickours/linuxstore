@@ -13,8 +13,6 @@
             </test-roots>
             <included-library dirs="200">file.reference.gf-client.jar</included-library>
             <included-library dirs="200">file.reference.linuxstore-ejb-1.1.jar</included-library>
-            <included-library dirs="200">file.reference.commons-fileupload-1.2.2.jar</included-library>
-            <included-library dirs="200">file.reference.commons-io-2.2.jar</included-library>
         </data>
     </configuration>
 </project>

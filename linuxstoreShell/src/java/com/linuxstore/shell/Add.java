@@ -9,7 +9,6 @@ import com.linuxstore.ejb.entity.Application.Category;
 import com.linuxstore.ejb.remote.ApplicationFacadeRemote;
 import java.util.Arrays;
 import java.util.List;
-import org.apache.commons.fileupload.disk.DiskFileItem;
 
 /**
  *
