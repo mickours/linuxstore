@@ -62,6 +62,7 @@ public class PurchaseServlet extends HttpServlet {
                 session.setAttribute("user", user);
                 session.removeAttribute("cart");
                 request.setAttribute("confirmationMessage", "purchase_finished");
+                request.setAttribute("dealOk",true);
                 URLHelper.redirectTo(URLHelper.Page.confirmation, request, response);
             }
             else{
