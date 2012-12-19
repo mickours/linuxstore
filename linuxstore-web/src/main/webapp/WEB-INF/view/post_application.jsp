@@ -47,7 +47,7 @@
                 </tr>
             </table>
 
-            <input type='submit' value="<fmt:message key='submit'/>" id="submitPostApp"><br/>
+            <input type='submit' class="btn btn-small btn-primary" value="<fmt:message key='submit'/>" id="submitPostApp"><br/>
         </form>
     </div>
 </div>

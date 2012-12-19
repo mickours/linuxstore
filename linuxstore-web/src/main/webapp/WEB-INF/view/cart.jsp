@@ -1,11 +1,14 @@
 <div class="CartPage">
     <div class="titleCart"><h1><fmt:message key="your_cart"/></h1></div>
-    <table class="cartTable">
+    <table class="cartTable table-hover">
+        <thead>
         <tr>
             <th class="thApplication"><fmt:message key="selected_app"/></th>
         <th><fmt:message key="price"/></th>
         <th><fmt:message key="remove"/></th>
         </tr>
+        </thead>
+        <tbody>
         <c:forEach var="app" items="${cart.appList}" varStatus="iter">
             <tr class="${((iter.index % 2) == 1) ? 'lightBlue' : 'white'}">
 
@@ -29,13 +32,14 @@
                     </form>
                 </td>
             </tr>
+        </tbody>
 
         </c:forEach>
     </table>
 
     <div class="buttonContinueShopping">
         <form  action="applications">
-            <input class="button" type="submit"
+            <input class="button btn btn-small btn-primary" type="submit"
                    value="<fmt:message key='continu'/>">
         </form>
     </div>
@@ -44,7 +48,7 @@
         <c:when test="${cart.numberOfApp != 0}">
             <div class="buttonProceedCheckoutg">
                 <form  action="purchase" >
-                    <input class="button" type="submit"
+                    <input class="button btn btn-small btn-primary" type="submit"
                            value="<fmt:message key='purchase'/>">
                 </form>
             </div>

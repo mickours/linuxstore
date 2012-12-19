@@ -13,7 +13,7 @@
             <span class="priceApp">${appTopGame.price} &euro;</span>
             <span class="buttonGetIT"><form action="addToCart" method="POST">
                     <input type="hidden" name="appToAddId" value="${appTopGame.id}">
-                    <input type="submit" name="submitApp" value="<fmt:message key='add_to_cart'/>">
+                    <input type="submit" class="btn btn-small btn-primary" name="submitApp" value="<fmt:message key='add_to_cart'/>">
                 </form></span></div>
         </a>
     </div>
@@ -30,7 +30,7 @@
             <span class="priceApp">${appTopTheme.price} &euro;</span>
             <span class="buttonGetIT"><form action="addToCart" method="POST">
                     <input type="hidden" name="appToAddId" value="${appTopMulti.id}">
-                    <input type="submit" name="submitApp" value="<fmt:message key='add_to_cart'/>">
+                    <input type="submit" class="btn btn-small btn-primary" name="submitApp" value="<fmt:message key='add_to_cart'/>">
                 </form></span></div>
         </a>
     </div>
@@ -47,7 +47,7 @@
             <span class="priceApp">${appTopAccessoire.price} &euro;</span>
             <span class="buttonGetIT"><form action="addToCart" method="POST">
                     <input type="hidden" name="appToAddId" value="${appTopAccessoire.id}">
-                    <input type="submit" name="submitApp" value="<fmt:message key='add_to_cart'/>">
+                    <input type="submit" class="btn btn-small btn-primary" name="submitApp" value="<fmt:message key='add_to_cart'/>">
                 </form></span></div>
         </a>
     </div>
@@ -65,7 +65,7 @@
             <span class="priceApp">${appTopMulti.price} &euro;</span>
             <span class="buttonGetIT"><form action="addToCart" method="POST">
                     <input type="hidden" name="appToAddId" value="${appTopMulti.id}">
-                    <input type="submit" name="submitApp" value="<fmt:message key='add_to_cart'/>">
+                    <input type="submit" class="btn btn-small btn-primary" name="submitApp" value="<fmt:message key='add_to_cart'/>">
                 </form></span></div>
         </a>
     </div>

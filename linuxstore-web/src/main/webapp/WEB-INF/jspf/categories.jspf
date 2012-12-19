@@ -33,7 +33,7 @@
         <form action="applications" title="Recherche">
             <label for="search"><fmt:message key ="search" /> : </label>
             <div class="searchTextInput">
-                <input type='text' id='search' name="search" value='${patern}' >
+                <input type='text' class="input-medium search-query" id="searchField"" name="searchField" value='${patern}' >
             </div>
             <label for="sortby"><fmt:message key ="sort_by" /> :</label>
             <SELECT id="sortby" name="sortby" >
@@ -42,6 +42,6 @@
             </SELECT>
             
             ${empty selectedCategory? "": "<input type='hidden' name='category' value=".concat(selectedCategory).concat(" >")}
-            <input type='Submit' id="submitSearch" value='Search'/>
+            <input type='Submit' class="btn" id="submitSearch" value='Search'/>
         </form>
     </div>
