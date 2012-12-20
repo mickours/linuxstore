@@ -31,12 +31,12 @@
                                 <c:url var="url" value="chooseLanguage">
                                     <c:param name="language" value="fr"/>
                                 </c:url>
-                                <a href="${url}">français</a>
+                                <a href="${url}"><img src="Pictures/fr.png" /></a>
                                  | 
                                 <c:url var="url" value="chooseLanguage">
                                     <c:param name="language" value="en"/>
                                 </c:url>
-                                <a href="${url}">english</a>
+                                <a href="${url}"><img src="Pictures/en.png"</a>
                             <br/>
 
                         <c:choose>
