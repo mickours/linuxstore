@@ -28,63 +28,16 @@
 
                     <div class="headerWidget">
                         <%-- language selection widget --%>
-                        <!--                        <c:choose>
-                        <%-- When user hasn't explicitly set language,
-                             render toggle according to browser's preferred locale --%>
-                        <c:when test="${empty sessionScope['javax.servlet.jsp.jstl.fmt.locale.session']}">-->
-                        <c:choose>
-                            <c:when test="${language ne 'en'}">
-                                français
-                            </c:when>
-                            <c:otherwise>
                                 <c:url var="url" value="chooseLanguage">
                                     <c:param name="language" value="fr"/>
                                 </c:url>
                                 <a href="${url}">français</a>
-                            </c:otherwise>
-                        </c:choose> |
-
-                        <c:choose>
-                            <c:when test="${language eq 'en'}">
-                                english
-                            </c:when>
-                            <c:otherwise>
+                                 | 
                                 <c:url var="url" value="chooseLanguage">
                                     <c:param name="language" value="en"/>
                                 </c:url>
                                 <a href="${url}">english</a>
-                            </c:otherwise>
-                        </c:choose>
                             <br/>
-                        <!--                            </c:when>
-
-                        <%-- Otherwise, render widget according to the set locale --%>
-                        <c:otherwise>
-                            <c:choose>
-                                <c:when test="${sessionScope['javax.servlet.jsp.jstl.fmt.locale.session'] ne 'en'}">
-                                    français
-                                </c:when>
-                                <c:otherwise>
-                                    <c:url var="url" value="chooseLanguage">
-                                        <c:param name="language" value="fr"/>
-                                    </c:url>
-                                    <div class="bubble"><a href="${url}">français</a></div>
-                                </c:otherwise>
-                            </c:choose> |
-
-                            <c:choose>
-                                <c:when test="${sessionScope['javax.servlet.jsp.jstl.fmt.locale.session'] eq 'en'}">
-                                    english
-                                </c:when>
-                                <c:otherwise>
-                                    <c:url var="url" value="chooseLanguage">
-                                        <c:param name="language" value="en"/>
-                                    </c:url>
-                                    <div class="bubble"><a href="${url}">english</a></div>
-                                </c:otherwise>
-                            </c:choose>
-                        </c:otherwise>
-                    </c:choose>-->
 
                         <c:choose>
                             <c:when test="${user != null}">

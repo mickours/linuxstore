@@ -41,7 +41,7 @@ public class ChooseLanguageServlet extends HttpServlet {
         request.getSession().setAttribute("language", language);
 
         // forward request to welcome page
-        URLHelper.redirectTo(URLHelper.Page.index, request, response);
+        request.getRequestDispatcher("index").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

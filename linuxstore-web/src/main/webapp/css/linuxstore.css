@@ -396,7 +396,7 @@ filter:progid:DXImageTransform.Microsoft.Shadow(color=#9b9b9b, Direction=134, St
 
 .priceApp{
     float: left;
-    margin-left: 25%;
+    margin-left: 10px;
 }
 
 .buttonGetIT{

@@ -6,8 +6,10 @@ package com.linuxstore.web;
 
 import com.linuxstore.ejb.entity.Application;
 import com.linuxstore.ejb.remote.ApplicationFacadeRemote;
+import com.linuxstore.web.utils.CategoriesView;
+import com.linuxstore.web.utils.URLHelper;
+import com.linuxstore.web.utils.URLHelper.Page;
 import java.io.IOException;
-
 import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.EJB;
@@ -16,9 +18,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import com.linuxstore.web.utils.CategoriesView;
-import com.linuxstore.web.utils.URLHelper;
-import com.linuxstore.web.utils.URLHelper.Page;
 
 /**
  *
@@ -62,7 +61,7 @@ public class IndexServlet extends HttpServlet {
         }catch(IndexOutOfBoundsException ex){
             //do nothing : missing apps
         }
-        
+
         URLHelper.redirectTo(Page.index, request, response);
     }
 
